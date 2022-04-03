@@ -2,6 +2,7 @@ package com.sgg.suivisprod.repository;
 
 import java.util.List;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -10,6 +11,18 @@ import com.sgg.suivisprod.domain.Task;
 
 @Repository
 public interface TaskRepository extends MongoRepository<Task, String> {
-	@Query(value="{'user':{'userId':'Ht1GcigN1YRwzFjOWuN8J9WUf6x2'}}")
-	List<Task> findAll(String user);
+	@Query(value="{'user':{'userId':?0}}")
+	List<Task> findByUserId(String userId, Pageable page);
+	
+	@Query(value="{'taskState':'todo', 'user':{'userId':?0}}")
+	List<Task> findTodoTask(String userId);
+	
+	@Query(value="{'taskState':'in_progress', 'user':{'userId':?0}}")
+	List<Task> findInProgressTask(String userId);
+	
+	@Query(value="{'taskState':'Done', 'user':{'userId':?0}}")
+	List<Task> findDoneTask(String userId);
+	
+	@Query(value="{'taskState':'stdby', 'user':{'userId':?0}}")
+	List<Task> findStdByTask(String userId);
 }

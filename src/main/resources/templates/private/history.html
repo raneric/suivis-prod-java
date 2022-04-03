@@ -52,81 +52,27 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<th><a href="#">
+				<tr th:each="task:${tasks}">
+					<th><a
+							th:href="${task.booth.boothUrl}"
+							target="_blank">
 							<img
 								alt=""
 								th:src="@{/icons/link.png}">
 						</a></th>
-					<td><a href="#"> 13515 </a></td>
-					<td>Créa</td>
-					<td>10</td>
-					<td>12:00</td>
-					<td>Equipement de laboratoire</td>
-					<td>2022-01-10</td>
-					<td>2022-01-10</td>
-					<td><span class="badge rounded-pill bg-success text-dark">
-							<img
-							alt=""
-							th:src="@{/icons/done.png}"> Done
-					</span></td>
+					<td><a
+							href="#"
+							th:text="${task.booth.boothId}"> </a></td>
+					<td th:text="${task.taskType}"></td>
+					<td th:text="${task.booth.nbAfter}"></td>
+					<td th:text="${task.totalWorkingTime}"></td>
+					<td th:text="${task.booth.category}"></td>
+					<td th:text="${task.startDate ==null?'---':task.startDate}"></td>
+					<td th:text="${task.finishedDate ==null?'---': task.finishedDate}"></td>
+					<td><img
+						alt=""
+						th:src="@{/icons/done.png}"/> <span th:text="${task.taskState}"></span></td>
 				</tr>
-				<tr>
-					<th><a href="#">
-							<img
-								alt="link_icon"
-								th:src="@{/icons/link.png}">
-						</a></th>
-					<td><a href="#"> 13515 </a></td>
-					<td>Créa</td>
-					<td>10</td>
-					<td>12:00</td>
-					<td>Equipement de laboratoire</td>
-					<td>2022-01-10</td>
-					<td>2022-01-10</td>
-					<td><span class="badge rounded-pill bg-warning text-dark">
-							<img
-							alt=""
-							th:src="@{/icons/in_progress.png}"> in progress
-					</span></td>
-				</tr>
-				<tr>
-					<th><a href="#">
-							<img
-								alt=""
-								th:src="@{/icons/link.png}">
-						</a></th>
-					<td><a href="#"> 13515 </a></td>
-					<td>Créa</td>
-					<td>10</td>
-					<td>12:00</td>
-					<td>Equipement de laboratoire</td>
-					<td>2022-01-10</td>
-					<td>2022-01-10</td>
-					<td><span class="badge rounded-pill bg-info text-dark">
-							<img
-							alt=""
-							th:src="@{/icons/to-do-list.png}"> to do
-					</span></td>
-				</tr>
-				<tr>
-					<th><a href="#">
-							<img
-								alt=""
-								th:src="@{/icons/link.png}">
-						</a></th>
-					<td><a href="#"> 13515 </a></td>
-					<td>Créa</td>
-					<td>10</td>
-					<td>12:00</td>
-					<td>Equipement de laboratoire</td>
-					<td>2022-01-10</td>
-					<td>2022-01-10</td>
-					<td><span class="badge rounded-pill bg-danger text-dark">
-							<img
-							alt=""
-							th:src="@{/icons/stdby.png}"> Stdby
-					</span></td>
 			</tbody>
 		</table>
 	</div>

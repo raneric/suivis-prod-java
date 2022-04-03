@@ -1,15 +1,37 @@
 package com.sgg.suivisprod.controller;
 
+import static com.sgg.suivisprod.utils.AppCont.HISTORY_PATH;
+import static com.sgg.suivisprod.utils.AppCont.HISTORY_VIEW;
+
+import java.security.Principal;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import static com.sgg.suivisprod.utils.AppCont.HISTORY_VIEW;
-import static com.sgg.suivisprod.utils.AppCont.HISTORY_PATH;
+import com.sgg.suivisprod.domain.Task;
+import com.sgg.suivisprod.domain.User;
+import com.sgg.suivisprod.repository.TaskRepository;
+import com.sgg.suivisprod.repository.UserRepository;
 @Controller
 public class HistoryController {
 	
+	@Autowired
+	TaskRepository taskRepository;
+	
+	@Autowired
+	UserRepository userRepository;
+	
 	@GetMapping(HISTORY_PATH)
-	public String history() {
+	public String history(Model model, Principal p) {
+		User user = userRepository.findByUsername(p.getName());
+		//Pageable page = PageRequest.of(0, 6);
+		List<Task> allData = taskRepository.findTodoTask(user.getUserId());
+		model.addAttribute("tasks", allData);
 		return HISTORY_VIEW;
 	}
 	
