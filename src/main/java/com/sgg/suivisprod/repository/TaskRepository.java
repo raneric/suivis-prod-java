@@ -15,14 +15,14 @@ public interface TaskRepository extends MongoRepository<Task, String> {
 	List<Task> findByUserId(String userId, Pageable page);
 	
 	@Query(value="{'taskState':'todo', 'user':{'userId':?0}}")
-	List<Task> findTodoTask(String userId);
+	List<Task> findTodoTask(String userId, Pageable page);
 	
 	@Query(value="{'taskState':'in_progress', 'user':{'userId':?0}}")
-	List<Task> findInProgressTask(String userId);
+	List<Task> findInProgressTask(String userId, Pageable page);
 	
-	@Query(value="{'taskState':'Done', 'user':{'userId':?0}}")
-	List<Task> findDoneTask(String userId);
+	@Query(value="{'taskState':'done', 'user':{'userId':?0}}")
+	List<Task> findDoneTask(String userId, Pageable page);
 	
 	@Query(value="{'taskState':'stdby', 'user':{'userId':?0}}")
-	List<Task> findStdByTask(String userId);
+	List<Task> findStdByTask(String userId, Pageable page);
 }

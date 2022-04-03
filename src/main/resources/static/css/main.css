@@ -159,8 +159,13 @@ a {
 /*---------------------------------- Table style -----------------------------------*/
 
 /*---------------------------------- Task  -----------------------------------------*/
-.login-form {
-	width: 290px;
+.login-form input {
+	margin-top:10px;
+}
+
+#loginForm{
+	display: flex;
+    flex-direction: column;
 }
 
 .login-form button {

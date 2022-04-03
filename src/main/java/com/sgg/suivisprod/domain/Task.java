@@ -1,19 +1,23 @@
 package com.sgg.suivisprod.domain;
 
+import static com.sgg.suivisprod.utils.TimeUtils.convertDoubleTimeAsFormatedString;
+
+import java.util.Date;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document("task_list")
 public class Task implements Comparable<Task> {
-	
+
 	@Id
 	private String  id;
 	private int     taskId;
 	private String  taskType;
 	private boolean prio;
 	private double  totalWorkingTime;
-	private String  startDate;
-	private String  finishedDate;
+	private Date    startDate;
+	private Date    finishedDate;
 	private String  note;
 	private String  taskState;
 	private double  productivity;
@@ -52,23 +56,27 @@ public class Task implements Comparable<Task> {
 		return totalWorkingTime;
 	}
 
+	public String getTotalWorkingTimeAsString() {
+		return convertDoubleTimeAsFormatedString(this.totalWorkingTime);
+	}
+
 	public void setTotalWorkingTime(double totalWorkingTime) {
 		this.totalWorkingTime = totalWorkingTime;
 	}
 
-	public String getStartDate() {
+	public Date getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(String startDate) {
+	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
 
-	public String getFinishedDate() {
+	public Date getFinishedDate() {
 		return finishedDate;
 	}
 
-	public void setFinishedDate(String finishedDate) {
+	public void setFinishedDate(Date finishedDate) {
 		this.finishedDate = finishedDate;
 	}
 

@@ -21,30 +21,25 @@
 			class="alert alert-danger">Login error, check your
 			username/password</div>
 		<div class="login-form shadow p-3 mb-5 bg-body rounded">
+		
 			<form
 				th:action="@{/login}"
 				id="loginForm"
 				method="post">
-				<label for="username">
-					User Name
-					<input
-						class="form-control"
-						id="username"
-						name="username"
-						type="text"
-						placeholder="User Name"
-						aria-label="User Name" />
-				</label>
-				<label for="password">
-					Password
-					<input
-						class="form-control"
-						id="password"
-						name="password"
-						type="password"
-						placeholder="Password"
-						aria-label="Password" />
-				</label>
+				<input
+					class="form-control"
+					id="username"
+					name="username"
+					type="text"
+					placeholder="User Name"
+					aria-label="User Name" />
+				<input
+					class="form-control"
+					id="password"
+					name="password"
+					type="password"
+					placeholder="Password"
+					aria-label="Password" />
 				<button
 					type="submit"
 					class="btn btn-info">
