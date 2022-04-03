@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<div
+		th:fragment="home_page"
+		class="home-menu">
+		<div class="home-btn">
+			<a href="/dashboard">
+				<img
+					class="home-icon"
+					th:src="@{/icons/dashboard.png}" />
+			</a>
+		</div>
+		<div class="home-btn">
+			<a href="/task/new">
+				
+				<img
+					class="home-icon"
+					th:src="@{/icons/document.png}" />
+			</a>
+		</div>
+		<div class="home-btn">
+			<a href="/history">
+				
+				<img
+					class="home-icon"
+					th:src="@{/icons/list.png}" />
+
+			</a>
+		</div>
+		<div class="home-btn">
+			<a href="/productivity">
+				
+				<img
+					class="home-icon"
+					th:src="@{/icons/productivity.png}" />
+			</a>
+		</div>
+	</div>
+</body>
+</html>
