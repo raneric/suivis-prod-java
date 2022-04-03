@@ -17,24 +17,23 @@ import com.sgg.suivisprod.domain.Task;
 import com.sgg.suivisprod.domain.User;
 import com.sgg.suivisprod.repository.TaskRepository;
 import com.sgg.suivisprod.repository.UserRepository;
-import com.sgg.suivisprod.utils.TimeUtils;
+
 @Controller
 public class HistoryController {
-	
+
 	@Autowired
 	TaskRepository taskRepository;
-	
+
 	@Autowired
 	UserRepository userRepository;
-	
+
 	@GetMapping(HISTORY_PATH)
 	public String history(Model viewModel, Principal userPrinicipal) {
-		TimeUtils.convertDoubleTimeAsFormatedString(6.02);
-		User user = userRepository.findByUsername(userPrinicipal.getName());
-		Pageable page = PageRequest.of(0, 6);
-		List<Task> allData = taskRepository.findDoneTask(user.getUserId(),page);
+		User       user    = userRepository.findByUsername(userPrinicipal.getName());
+		Pageable   page    = PageRequest.of(0, 6);
+		List<Task> allData = taskRepository.findDoneTask(user.getUserId(), page);
 		viewModel.addAttribute("tasks", allData);
 		return HISTORY_VIEW;
 	}
-	
+
 }
