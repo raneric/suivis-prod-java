@@ -30,7 +30,7 @@ public class HistoryController {
 	@GetMapping(HISTORY_PATH)
 	public String history(Model viewModel, Principal userPrinicipal) {
 		User       user    = userRepository.findByUsername(userPrinicipal.getName());
-		Pageable   page    = PageRequest.of(0, 6);
+		Pageable   page    = PageRequest.of(0, 8);
 		List<Task> allData = taskRepository.findDoneTask(user.getUserId(), page);
 		viewModel.addAttribute("tasks", allData);
 		return HISTORY_VIEW;

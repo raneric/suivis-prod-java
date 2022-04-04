@@ -67,11 +67,14 @@
 					<td th:text="${task.booth.nbAfter}"></td>
 					<td th:text="${task.totalWorkingTimeAsString}"></td>
 					<td th:text="${task.booth.category}"></td>
-					<td th:text="${task.startDate == null ? '---':  #dates.format(task.startDate,'dd-MM-yyyy')}"></td>
-					<td th:text="${task.finishedDate ==null ? '---': #dates.format(task.finishedDate,'dd-MM-yyyy')}"></td>
+					<td
+						th:text="${task.startDate == null ? '---':  #dates.format(task.startDate,'dd-MM-yyyy')}"></td>
+					<td
+						th:text="${task.finishedDate ==null ? '---': #dates.format(task.finishedDate,'dd-MM-yyyy')}"></td>
 					<td><img
 						alt=""
-						th:src="@{/icons/done.png}"/> <span th:text="${task.taskState}"></span></td>
+						th:src="@{'/icons/'+${task.taskState}+'.png'}" /> <span
+						th:text="${task.taskState}"></span></td>
 				</tr>
 			</tbody>
 		</table>
