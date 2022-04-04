@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<div
+		th:fragment="modal_status"
+		id="booth-status-modal"
+		class="modal-container">
+		<div class="modal-content">
+			<p>Installation Install Bootstrap’s source Sass and JavaScript
+				files via npm, Composer, or Meteor. Package managed installs don’t
+				include documentation or our full build scripts. You can also use
+				our npm template repo to quickly generate a Bootstrap project via
+				npm.</p>
+			<button
+				id="status-com"
+				onclick="closeModal(event)"
+				class="modal-close-btn btn btn-primary">Close</button>
+		</div>
+	</div>
+</body>
+</html>

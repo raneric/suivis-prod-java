@@ -12,6 +12,9 @@
 	rel="stylesheet"
 	th:href="@{/css/main.css}" />
 <meta charset="UTF-8">
+<script
+	type="text/javascript"
+	th:src="@{/js/script.js}"></script>
 <title>New Task</title>
 </head>
 <body>
@@ -19,6 +22,7 @@
 	<div class="drawer-container">
 		<th:block th:insert="~{fragments/appDrawer :: drawer}"></th:block>
 	</div>
+	<th:block th:insert="~{fragments/taskTypeModal :: modal_task}"></th:block>
 	<div class="task-container">
 		<div class="task-form shadow p-3 mb-5 bg-body rounded">
 			<form
@@ -26,7 +30,9 @@
 				action="#">
 				<div class="row">
 					<div class="col-sm-5">
-						<span class="badge bg-info">Essai Payant</span> <span
+						<span
+							onclick="openStatusComModal()"
+							class="badge bg-info">Essai Payant</span> <span
 							class="badge bg-info">V</span>
 					</div>
 					<div class="col-sm form-check form-switch">
@@ -51,6 +57,7 @@
 				<div class="row mb-4">
 					<div class="col-sm">
 						<input
+							id="boothId"
 							type="text"
 							class="form-control"
 							placeholder="Booth ID"
@@ -58,6 +65,7 @@
 					</div>
 					<div class="col-sm">
 						<input
+							id="BoothUrl"
 							type="text"
 							class="form-control"
 							placeholder="BoothUrl"
@@ -67,6 +75,7 @@
 				<div class="row mb-4">
 					<div class="col-sm-6">
 						<input
+							id="Category"
 							type="text"
 							class="form-control"
 							placeholder="Categorie"
@@ -74,6 +83,7 @@
 					</div>
 					<div class="col-sm-3">
 						<input
+							id="nbBefore"
 							type="number"
 							class="form-control"
 							placeholder="Nb Before"
@@ -81,6 +91,7 @@
 					</div>
 					<div class="col-sm-3">
 						<input
+							id="nbAfter"
 							type="number"
 							class="form-control"
 							placeholder="Nb After"
@@ -89,11 +100,21 @@
 				</div>
 				<div class="row mb-4">
 					<div class="col-sm">
-						<input
-							type="text"
-							class="form-control"
-							placeholder="Task Type"
-							aria-label="TaskType">
+						<div class="input-group mb-3">
+							<input
+								id="taskType"
+								type="text"
+								class="form-control"
+								placeholder="Task Type"
+								aria-label="TaskType">
+							<button
+								onclick="openTaskTypeModal()"
+								class="btn btn-outline-secondary"
+								type="button"
+								id="button-addon2">
+								<img th:src="@{~/icons/find.png}" />
+							</button>
+						</div>
 					</div>
 					<div class="col-sm">
 						<input
@@ -117,11 +138,11 @@
 		</div>
 		<div class="task-info">
 			<table class="table">
-			<thead>
-				<tr class="table-dark">
-					<th scope="col">General Info</th>
-				</tr>
-			</thead>
+				<thead>
+					<tr class="table-dark">
+						<th scope="col">General Info</th>
+					</tr>
+				</thead>
 				<tbody>
 					<tr>
 						<td>Start Date: ---</td>

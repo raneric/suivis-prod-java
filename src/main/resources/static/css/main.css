@@ -152,7 +152,8 @@ a {
 .task-info th {
 	display: flex;
 	justify-content: center;
-    background-color: #002c46;
+	background-color: #002c46;
+	color: wheat;
 }
 
 .task-info span {
@@ -165,7 +166,7 @@ a {
 	margin-left: 20px;
 	float: left;
 	display: inline;
-	height: 320px;
+	height: fit-content;
 	margin-left: 20px;
 	border: 1px solid #d5d3d3;
 }
@@ -216,4 +217,46 @@ a {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+}
+
+/*---------------------------------- MODAL UI  -----------------------------------------*/
+.modal-container {
+	display: flex;
+	position: fixed; /* Stay in place */
+	z-index: 10000; /* Sit on top */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+	transition: display 2s;
+}
+
+.modal-content {
+	background-color: #fefefe;
+	margin: auto;
+	padding: 10px;
+	border: 1px solid #888;
+	width: fit-content;
+	display: flex;
+	flex-direction: row;
+}
+
+.modal-close-btn {
+	width: 65px;
+	height: 40px;
+	margin-right:5px;
+	margin-top:5px
+}
+
+.btn-group-modal {
+	display:flex;
+	flex-direction: column;
+	
+}
+.btn-group-modal button{
+	margin:3px;
+	
 }
