@@ -18,7 +18,7 @@ import com.sgg.suivisprod.repository.TaskTypeRepository;
 
 @Controller
 @RequestMapping(TASK_PATH)
-public class NewTaskController {
+public class TaskController {
 
 	@Autowired
 	TaskTypeRepository taskTypeRepository;
