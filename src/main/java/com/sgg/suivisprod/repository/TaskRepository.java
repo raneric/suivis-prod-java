@@ -14,6 +14,9 @@ public interface TaskRepository extends MongoRepository<Task, String> {
 	@Query(value="{'user':{'userId':?0}}")
 	List<Task> findByUserId(String userId, Pageable page);
 	
+	@Query(value="{'taskId':?0}")
+	Task findOneByTaskId(int taskId);
+	
 	@Query(value="{'taskState':'todo', 'user':{'userId':?0}}")
 	List<Task> findTodoTask(String userId, Pageable page);
 	

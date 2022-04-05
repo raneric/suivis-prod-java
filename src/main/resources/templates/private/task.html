@@ -11,7 +11,7 @@
 <link
 	rel="stylesheet"
 	th:href="@{/css/main.css}" />
-<meta charset="UTF-8">
+<meta charset="UTF-8"/>
 <script
 	type="text/javascript"
 	th:src="@{/js/script.js}"></script>
@@ -44,7 +44,7 @@
 							class="form-check-input"
 							type="checkbox"
 							role="switch"
-							id="prio">
+							id="prio"/>
 						<label
 							class="form-check-label"
 							for="prio">Prio</label>
@@ -65,7 +65,7 @@
 							type="text"
 							class="form-control"
 							placeholder="Booth ID"
-							aria-label="BoothId">
+							aria-label="BoothId"/>
 					</div>
 					<div class="col-sm">
 						<input
@@ -74,7 +74,7 @@
 							type="text"
 							class="form-control"
 							placeholder="BoothUrl"
-							aria-label="BoothUrl">
+							aria-label="BoothUrl"/>
 					</div>
 				</div>
 				<div class="row mb-4">
@@ -84,7 +84,7 @@
 							type="text"
 							class="form-control"
 							placeholder="Categorie"
-							aria-label="Categorie">
+							aria-label="Categorie"/>
 					</div>
 					<div class="col-sm-3">
 						<input
@@ -92,7 +92,7 @@
 							type="number"
 							class="form-control"
 							placeholder="Nb Before"
-							aria-label="nbBefore">
+							aria-label="nbBefore"/>
 					</div>
 					<div class="col-sm-3">
 						<input
@@ -100,7 +100,7 @@
 							type="number"
 							class="form-control"
 							placeholder="Nb After"
-							aria-label="NbAfter">
+							aria-label="NbAfter"/>
 					</div>
 				</div>
 				<div class="row mb-4">
@@ -111,7 +111,7 @@
 								type="text"
 								class="form-control"
 								placeholder="Task Type"
-								aria-label="TaskType">
+								aria-label="TaskType"/>
 							<button
 								onclick="openTaskTypeModal()"
 								class="btn btn-outline-secondary"
@@ -126,7 +126,7 @@
 							type="text"
 							class="form-control"
 							placeholder="Total working Time"
-							aria-label="TotalWorkingTime">
+							aria-label="TotalWorkingTime"/>
 					</div>
 				</div>
 				<div class="row mb-4">
@@ -159,10 +159,10 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td>Start Date: ---</td>
+						<td>Start Date: <span th:text="${task.startDate == null ? '---':  #dates.format(task.startDate,'dd-MM-yyyy')}"></span></td>
 					</tr>
 					<tr>
-						<td>Total Working Time : 00:00 (hh:mm)</td>
+						<td>Total Working Time : <span></span> (hh:mm)</td>
 					</tr>
 					<tr>
 						<td>Productivity: 0 %</td>
