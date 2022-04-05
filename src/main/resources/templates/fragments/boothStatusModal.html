@@ -11,16 +11,99 @@
 		id="booth-status-modal"
 		class="modal-container">
 		<div class="modal-content">
-			<p>Installation Install Bootstrap’s source Sass and JavaScript
-				files via npm, Composer, or Meteor. Package managed installs don’t
-				include documentation or our full build scripts. You can also use
-				our npm template repo to quickly generate a Bootstrap project via
-				npm.</p>
-			<button
-				id="status-com"
-				onclick="closeModal(event)"
-				class="modal-close-btn btn btn-primary">Close</button>
+			<div class="status-com-group">
+				Status Com
+				<label for="essai">
+					Essai
+					<input
+						onclick="handleStatusCom(event)"
+						value="Essai"
+						name="statu-com"
+						class="form-check-input"
+						type="radio"
+						id="essai" />
+				</label>
+				<label for="abonee">
+					Abonnée
+					<input
+						onclick="handleStatusCom(event)"
+						value="Abonnée"
+						name="statu-com"
+						class="form-check-input"
+						type="radio"
+						id="abonee" />
+				</label>
+				<label for="essaiPayant">
+					EssaiPayant
+					<input
+						onclick="handleStatusCom(event)"
+						value="EssaiPayant"
+						name="statu-com"
+						class="form-check-input"
+						type="radio"
+						id="essaiPayant" />
+				</label>
+				<label for="degradee">
+					Dégradée
+					<input
+						onclick="handleStatusCom(event)"
+						value="Dégradée"
+						name="statu-com"
+						class="form-check-input"
+						type="radio"
+						id="degradee" />
+				</label>
+				<label for="abondon">
+					Abandon
+					<input
+						onclick="handleStatusCom(event)"
+						value="Abandon"
+						name="statu-com"
+						class="form-check-input"
+						type="radio"
+						id="abandon" />
+				</label>
+			</div>
+			<div class="status-iv-group">
+				Status IVP
+				<label for="status-i">
+					<input
+						name="statu-iv"
+						onclick="handleStatusCom(event)"
+						value="I"
+						class="form-check-input"
+						type="radio"
+						id="status-i" />
+					I
+				</label>
+				<label for="status-v">
+					<input
+						onclick="handleStatusCom(event)"
+						name="statu-iv"
+						value="V"
+						class="form-check-input"
+						type="radio"
+						id="status-v" />
+					V
+				</label>
+				<label for="status-p">
+					<input
+						onclick="handleStatusCom(event)"
+						name="statu-iv"
+						value="P"
+						class="form-check-input"
+						type="radio"
+						id="status-pv" />
+					P
+				</label>
+			</div>
 		</div>
+		<button
+			id="status-com"
+			onclick="closeModal(event)"
+			class="modal-close-btn btn btn-light">
+			<img th:src="@{/icons/cross.png}" />
+		</button>
 	</div>
 </body>
 </html>

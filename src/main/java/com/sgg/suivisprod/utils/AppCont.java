@@ -17,6 +17,9 @@ public final class AppCont {
 	public static final String PRODUCTIVITY_VIEW = PRIVATE_PATH + PRODUCTIVITY_PATH;
 	public static final String LOGIN_VIEW        = PUBLIC_PATH + LOGIN_PATH;
 	public static final String HOME_VIEW        = "home";
+	public static final String MAJ_TASK_TYPE = "Maj";
+	public static final String CREA_TASK_TYPE = "Crea";
+	public static final String OTHERS_TASK_TYPE = "Others";
 
 
 }

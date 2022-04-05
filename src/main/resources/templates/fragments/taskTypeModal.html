@@ -13,31 +13,30 @@
 		<div class="modal-content">
 			<div class="btn-group-modal">
 				<button
+					th:each="creaTask:${Crea.variant}"
 					onclick="clickedTaskType(event)"
-					class="btn btn-outline-primary">Créa</button>
-				<button
-					class="btn btn-outline-primary">AUTOVALIDCréa</button>
-				<button
-					class="btn btn-outline-primary">CréaDémo</button>
-				<button
-					class="btn btn-outline-primary">AUTOVALIDCréaDémo</button>
+					class="btn btn-outline-primary"
+					th:text="${creaTask.taskType}"></button>
 			</div>
 			<div class="btn-group-modal">
 				<button
-					class="btn btn-outline-primary">MAJ</button>
-				<button
-					class="btn btn-outline-primary">AUTOVALIDMaj</button>
-				<button
-					class="btn btn-outline-primary">MAJT</button>
-				<button
-					class="btn btn-outline-primary">MAJN</button>
+					th:each="majTask:${Maj.variant}"
+					onclick="clickedTaskType(event)"
+					class="btn btn-outline-primary"
+					th:text="${majTask.taskType}"></button>
 			</div>
-
+			<div class="btn-group-modal">
+				<button
+					th:each="othersTask:${Others.variant}"
+					onclick="clickedTaskType(event)"
+					class="btn btn-outline-primary"
+					th:text="${othersTask.taskType}"></button>
+			</div>
 		</div>
 		<button
 			id="task-type"
 			onclick="closeModal(event)"
-			class="modal-close-btn btn btn-outline-light">
+			class="modal-close-btn btn btn-light">
 			<img th:src="@{/icons/cross.png}" />
 		</button>
 	</div>
