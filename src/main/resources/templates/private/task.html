@@ -159,7 +159,7 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td>Start Date: <span th:text="${task == null ? '---':  #dates.format(task.startDate,'dd-MM-yyyy')}"></span></td>
+						<td>Start Date: <span th:text="${{task == null ? '---':  task.startDate}}">---</span></td>
 					</tr>
 					<tr>
 						<td>Total Working Time : <span th:text="${{(task == null) ? '---': task.totalWorkingTime}}"></span> (hh:mm)</td>

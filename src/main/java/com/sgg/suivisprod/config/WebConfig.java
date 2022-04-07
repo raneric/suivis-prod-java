@@ -11,6 +11,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import com.sgg.suivisprod.service.DateFormatter;
 import com.sgg.suivisprod.service.DoubleToStringWorkingTimeConverter;
 
 @Configuration
@@ -22,20 +23,25 @@ public class WebConfig implements WebMvcConfigurer {
 		registry.addViewController(LOGIN_PATH).setViewName(LOGIN_VIEW);
 	}
 
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry
-          .addResourceHandler("/resources/**")
-          .addResourceLocations("/resources/");	
-    }
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+	}
 
 	@Override
 	public void addFormatters(FormatterRegistry registry) {
 		registry.addConverter(totalWorkingTimeConverter());
+		registry.addFormatter(dateFormatter());
 	}
-       
+
 	@Bean
 	public DoubleToStringWorkingTimeConverter totalWorkingTimeConverter() {
 		return new DoubleToStringWorkingTimeConverter();
 	}
+
+	@Bean
+	public DateFormatter dateFormatter() {
+		return new DateFormatter();
+	}
+
 }

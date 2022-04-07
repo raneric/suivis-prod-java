@@ -38,7 +38,7 @@
 		</div>
 		<table class="table table-hover table-borderless">
 			<thead>
-				<tr class="table-dark">
+				<tr class="table-hrader">
 					<th scope="col">Link</th>
 					<th scope="col">BoothID</th>
 					<th scope="col">Task Type</th>
@@ -68,9 +68,9 @@
 					<td th:text="${{task.totalWorkingTime}}"></td>
 					<td th:text="${task.booth.category}"></td>
 					<td
-						th:text="${task.startDate == null ? '---':  #dates.format(task.startDate,'dd-MM-yyyy')}"></td>
+						th:text="${{task.startDate == null ? '---':  task.startDate}}"></td>
 					<td
-						th:text="${task.finishedDate ==null ? '---': #dates.format(task.finishedDate,'dd-MM-yyyy')}"></td>
+						th:text="${{task.finishedDate ==null ? '---': task.finishedDate}}"></td>
 					<td><img
 						alt=""
 						th:src="@{'/icons/'+${task.taskState}+'.png'}" /> <span
