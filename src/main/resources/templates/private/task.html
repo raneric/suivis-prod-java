@@ -159,10 +159,10 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td>Start Date: <span th:text="${task.startDate == null ? '---':  #dates.format(task.startDate,'dd-MM-yyyy')}"></span></td>
+						<td>Start Date: <span th:text="${task == null ? '---':  #dates.format(task.startDate,'dd-MM-yyyy')}"></span></td>
 					</tr>
 					<tr>
-						<td>Total Working Time : <span></span> (hh:mm)</td>
+						<td>Total Working Time : <span th:text="${{(task == null) ? '---': task.totalWorkingTime}}"></span> (hh:mm)</td>
 					</tr>
 					<tr>
 						<td>Productivity: 0 %</td>
@@ -174,7 +174,7 @@
 						<td>To submit before: ---</td>
 					</tr>
 					<tr>
-						<td>Task state: todo</td>
+						<td>Task state: <span th:text="${(task == null) ? '---': task.taskState}"></span> </td>
 					</tr>
 				</tbody>
 			</table>

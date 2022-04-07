@@ -65,7 +65,7 @@
 							th:text="${task.booth.boothId}"> </a></td>
 					<td th:text="${task.taskType}"></td>
 					<td th:text="${task.booth.nbAfter}"></td>
-					<td th:text="${task.totalWorkingTimeAsString}"></td>
+					<td th:text="${{task.totalWorkingTime}}"></td>
 					<td th:text="${task.booth.category}"></td>
 					<td
 						th:text="${task.startDate == null ? '---':  #dates.format(task.startDate,'dd-MM-yyyy')}"></td>

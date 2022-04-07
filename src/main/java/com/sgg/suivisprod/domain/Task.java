@@ -56,9 +56,9 @@ public class Task implements Comparable<Task> {
 		return totalWorkingTime;
 	}
 
-	public String getTotalWorkingTimeAsString() {
+	/*public String getTotalWorkingTimeAsString() {
 		return convertDoubleTimeAsFormatedString(this.totalWorkingTime);
-	}
+	}*/
 
 	public void setTotalWorkingTime(double totalWorkingTime) {
 		this.totalWorkingTime = totalWorkingTime;

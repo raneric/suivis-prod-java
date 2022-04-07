@@ -1,13 +1,17 @@
 package com.sgg.suivisprod.config;
 
+import static com.sgg.suivisprod.utils.AppCont.HOME_VIEW;
+import static com.sgg.suivisprod.utils.AppCont.LOGIN_PATH;
+import static com.sgg.suivisprod.utils.AppCont.LOGIN_VIEW;
+
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import static com.sgg.suivisprod.utils.AppCont.LOGIN_PATH;
-import static com.sgg.suivisprod.utils.AppCont.LOGIN_VIEW;
-import static com.sgg.suivisprod.utils.AppCont.HOME_VIEW;
+import com.sgg.suivisprod.service.DoubleToStringWorkingTimeConverter;
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
@@ -24,5 +28,14 @@ public class WebConfig implements WebMvcConfigurer {
           .addResourceHandler("/resources/**")
           .addResourceLocations("/resources/");	
     }
-	
+
+	@Override
+	public void addFormatters(FormatterRegistry registry) {
+		registry.addConverter(totalWorkingTimeConverter());
+	}
+       
+	@Bean
+	public DoubleToStringWorkingTimeConverter totalWorkingTimeConverter() {
+		return new DoubleToStringWorkingTimeConverter();
+	}
 }
