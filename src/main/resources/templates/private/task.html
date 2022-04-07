@@ -57,66 +57,86 @@
 					</div>
 				</div>
 				<br />
-				<div class="row mb-4">
+				<div class="row mb-1">
 					<div class="col-sm">
+						<label
+							for="boothId"
+							class="form-label">Booth ID</label>
 						<input
-							th:value="${task == null ? '---':  task.booth.boothId}"
+							th:value="${task == null ? _:  task.booth.boothId}"
 							id="boothId"
 							type="text"
 							class="form-control"
 							placeholder="Booth ID"
 							aria-label="BoothId" />
+
 					</div>
 					<div class="col-sm">
+						<label
+							for="boothUrl"
+							class="form-label">Booth URL</label>
 						<input
-							th:value="${task == null ? '---':  task.booth.boothUrl}"
-							id="BoothUrl"
+							th:value="${task == null ? _:  task.booth.boothUrl}"
+							id="boothUrl"
 							onchange="handleUrlOnChange(event)"
 							type="text"
 							class="form-control"
-							placeholder="BoothUrl"
-							aria-label="BoothUrl" />
+							placeholder="https://"
+							aria-label="https://" />
+
 					</div>
 				</div>
-				<div class="row mb-4">
+				<div class="row mb-1">
 					<div class="col-sm-6">
+						<label
+							for="category"
+							class="form-label">Category</label>
 						<input
-							th:value="${task == null ? '---':  task.booth.category}"
-							id="Category"
+							th:value="${task == null ? _:  task.booth.category}"
+							id="category"
 							type="text"
 							class="form-control"
-							placeholder="Categorie"
-							aria-label="Categorie" />
+							placeholder="Booth Categorie"
+							aria-label="Booth Categorie" />
 					</div>
 					<div class="col-sm-3">
+						<label
+							for="nbBefore"
+							class="form-label">Nb Before</label>
 						<input
-							th:value="${task == null ? '---':  task.booth.nbBefore}"
+							th:value="${task == null ? _:  task.booth.nbBefore}"
 							id="nbBefore"
 							type="number"
 							class="form-control"
-							placeholder="Nb Before"
-							aria-label="nbBefore" />
+							placeholder="0"
+							aria-label="0" />
 					</div>
 					<div class="col-sm-3">
+						<label
+							for="nbBefore"
+							class="form-label">Nb After</label>
 						<input
-							th:value="${task == null ? '---':  task.booth.nbAfter}"
+							th:value="${task == null ? _:  task.booth.nbAfter}"
 							id="nbAfter"
 							type="number"
 							class="form-control"
-							placeholder="Nb After"
-							aria-label="NbAfter" />
+							placeholder="0"
+							aria-label="0" />
 					</div>
 				</div>
-				<div class="row mb-4">
+				<div class="row mb-1">
 					<div class="col-sm">
-						<div class="input-group mb-3">
+						<label
+							for="taskType"
+							class="form-label">Task Type</label>
+						<div class="input-group mb-1">
 							<input
-								th:value="${task == null ? '---':  task.taskType}"
+								th:value="${task == null ? _:  task.taskType}"
 								id="taskType"
 								type="text"
 								class="form-control"
-								placeholder="Task Type"
-								aria-label="TaskType" />
+								placeholder="Click the find button"
+								aria-label="Click the find button" />
 							<button
 								onclick="openTaskTypeModal()"
 								class="btn btn-outline-secondary"
@@ -127,22 +147,29 @@
 						</div>
 					</div>
 					<div class="col-sm">
+						<label
+							for="totalWorkingTime"
+							class="form-label">Total Working Time</label>
 						<input
-							th:value="${{task == null ? '---':  task.totalWorkingTime}}"
+							id="totalWorkingTime"
+							th:value="${{task == null ? _:  task.totalWorkingTime}}"
 							type="text"
 							class="form-control"
-							placeholder="Total working Time"
-							aria-label="TotalWorkingTime" />
+							placeholder="00:00"
+							aria-label="00:00" />
 					</div>
 				</div>
-				<div class="row mb-4">
+				<div class="row mb-3">
 					<div class="col-sm">
+						<label
+							for="note"
+							class="form-label">Note</label>
 						<textarea
-							th:value="${task == null ? '---':  task.note}"
+							th:value="${task == null ? _:  task.note}"
 							id="note"
 							class="form-control"
-							placeholder="Note"
-							aria-label="Note"></textarea>
+							placeholder="Put some comment..."
+							aria-label="Put some comment...."></textarea>
 					</div>
 				</div>
 				<button
