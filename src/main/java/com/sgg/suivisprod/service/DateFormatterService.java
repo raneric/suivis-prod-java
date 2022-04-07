@@ -8,7 +8,7 @@ import java.util.Locale;
 
 import org.springframework.format.Formatter;
 
-public class DateFormatter implements Formatter<Date> {
+public class DateFormatterService implements Formatter<Date> {
 
 	@Override
 	public String print(Date dateObject, Locale locale) {

@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import com.sgg.suivisprod.service.DateFormatter;
+import com.sgg.suivisprod.service.DateFormatterService;
 import com.sgg.suivisprod.service.DoubleToStringWorkingTimeConverter;
 
 @Configuration
@@ -40,8 +40,8 @@ public class WebConfig implements WebMvcConfigurer {
 	}
 
 	@Bean
-	public DateFormatter dateFormatter() {
-		return new DateFormatter();
+	public DateFormatterService dateFormatter() {
+		return new DateFormatterService();
 	}
 
 }
