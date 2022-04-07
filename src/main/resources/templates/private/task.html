@@ -11,7 +11,7 @@
 <link
 	rel="stylesheet"
 	th:href="@{/css/main.css}" />
-<meta charset="UTF-8"/>
+<meta charset="UTF-8" />
 <script
 	type="text/javascript"
 	th:src="@{/js/script.js}"></script>
@@ -19,9 +19,7 @@
 </head>
 <body>
 	<th:block th:insert="~{fragments/appBar :: app_bar}"></th:block>
-	<div class="drawer-container">
-		<th:block th:insert="~{fragments/appDrawer :: drawer}"></th:block>
-	</div>
+	<th:block th:insert="~{fragments/appDrawer :: drawer}"></th:block>
 	<th:block th:insert="~{fragments/boothStatusModal :: modal_status}"></th:block>
 	<th:block th:insert="~{fragments/taskTypeModal :: modal_task}"></th:block>
 	<div class="task-container">
@@ -40,11 +38,12 @@
 					</div>
 					<div class="col-sm form-check form-switch">
 						<input
+							th:checked="${task == null ? _:  task.prio }"
 							onclick="handleTaskPriority(event)"
 							class="form-check-input"
 							type="checkbox"
 							role="switch"
-							id="prio"/>
+							id="prio" />
 						<label
 							class="form-check-label"
 							for="prio">Prio</label>
@@ -61,57 +60,63 @@
 				<div class="row mb-4">
 					<div class="col-sm">
 						<input
+							th:value="${task == null ? '---':  task.booth.boothId}"
 							id="boothId"
 							type="text"
 							class="form-control"
 							placeholder="Booth ID"
-							aria-label="BoothId"/>
+							aria-label="BoothId" />
 					</div>
 					<div class="col-sm">
 						<input
+							th:value="${task == null ? '---':  task.booth.boothUrl}"
 							id="BoothUrl"
 							onchange="handleUrlOnChange(event)"
 							type="text"
 							class="form-control"
 							placeholder="BoothUrl"
-							aria-label="BoothUrl"/>
+							aria-label="BoothUrl" />
 					</div>
 				</div>
 				<div class="row mb-4">
 					<div class="col-sm-6">
 						<input
+							th:value="${task == null ? '---':  task.booth.category}"
 							id="Category"
 							type="text"
 							class="form-control"
 							placeholder="Categorie"
-							aria-label="Categorie"/>
+							aria-label="Categorie" />
 					</div>
 					<div class="col-sm-3">
 						<input
+							th:value="${task == null ? '---':  task.booth.nbBefore}"
 							id="nbBefore"
 							type="number"
 							class="form-control"
 							placeholder="Nb Before"
-							aria-label="nbBefore"/>
+							aria-label="nbBefore" />
 					</div>
 					<div class="col-sm-3">
 						<input
+							th:value="${task == null ? '---':  task.booth.nbAfter}"
 							id="nbAfter"
 							type="number"
 							class="form-control"
 							placeholder="Nb After"
-							aria-label="NbAfter"/>
+							aria-label="NbAfter" />
 					</div>
 				</div>
 				<div class="row mb-4">
 					<div class="col-sm">
 						<div class="input-group mb-3">
 							<input
+								th:value="${task == null ? '---':  task.taskType}"
 								id="taskType"
 								type="text"
 								class="form-control"
 								placeholder="Task Type"
-								aria-label="TaskType"/>
+								aria-label="TaskType" />
 							<button
 								onclick="openTaskTypeModal()"
 								class="btn btn-outline-secondary"
@@ -123,15 +128,17 @@
 					</div>
 					<div class="col-sm">
 						<input
+							th:value="${{task == null ? '---':  task.totalWorkingTime}}"
 							type="text"
 							class="form-control"
 							placeholder="Total working Time"
-							aria-label="TotalWorkingTime"/>
+							aria-label="TotalWorkingTime" />
 					</div>
 				</div>
 				<div class="row mb-4">
 					<div class="col-sm">
 						<textarea
+							th:value="${task == null ? '---':  task.note}"
 							id="note"
 							class="form-control"
 							placeholder="Note"
@@ -159,13 +166,19 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td>Start Date: <span th:text="${{task == null ? '---':  task.startDate}}">---</span></td>
+						<td>Start Date: <span
+							th:text="${{task == null ? '---':  task.startDate}}">---</span></td>
 					</tr>
 					<tr>
-						<td>Total Working Time : <span th:text="${{(task == null) ? '---': task.totalWorkingTime}}"></span> (hh:mm)</td>
+						<td>Total Working Time : <span
+							th:text="${{(task == null) ? '---': task.totalWorkingTime}}"></span>
+							(hh:mm)
+						</td>
 					</tr>
 					<tr>
-						<td>Productivity: 0 %</td>
+						<td>Productivity:<span
+							th:text="${task == null ? '---':  task.productivity}"></span> %
+						</td>
 					</tr>
 					<tr>
 						<td>Total Working Time Goal: 00:00 (hh:mm)</td>
@@ -174,7 +187,9 @@
 						<td>To submit before: ---</td>
 					</tr>
 					<tr>
-						<td>Task state: <span th:text="${(task == null) ? '---': task.taskState}"></span> </td>
+						<td>Task state: <span
+							th:text="${(task == null) ? '---': task.taskState}"></span>
+						</td>
 					</tr>
 				</tbody>
 			</table>

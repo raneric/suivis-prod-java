@@ -11,14 +11,12 @@
 <link
 	rel="stylesheet"
 	th:href="@{/css/main.css}" />
-<meta charset="UTF-8"/>
+<meta charset="UTF-8" />
 <title>Dashboard</title>
 </head>
 <body>
-		<th:block th:insert="~{fragments/appBar :: app_bar}"></th:block>
-	<div class="drawer-container">
-		<th:block th:insert="~{fragments/appDrawer :: drawer}"></th:block>
-	</div>
+	<th:block th:insert="~{fragments/appBar :: app_bar}"></th:block>
+	<th:block th:insert="~{fragments/appDrawer :: drawer}"></th:block>
 	<span>DASHBOARD</span>
 </body>
 </html>

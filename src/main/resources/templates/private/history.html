@@ -16,9 +16,7 @@
 </head>
 <body>
 	<th:block th:insert="~{fragments/appBar :: app_bar}"></th:block>
-	<div class="drawer-container">
-		<th:block th:insert="~{fragments/appDrawer :: drawer}"></th:block>
-	</div>
+	<th:block th:insert="~{fragments/appDrawer :: drawer}"></th:block>
 	<div class="table-container shadow p-3 mb-5 bg-body rounded">
 		<div class="input-group mb-3 search-input">
 			<input
@@ -26,14 +24,14 @@
 				class="form-control"
 				placeholder="Search by boothId/task type"
 				aria-label="Search"
-				aria-describedby="basic-addon1"/>
+				aria-describedby="basic-addon1" />
 			<button
 				class="btn btn-outline-secondary"
 				type="button"
 				id="button-addon1">
 				<img
 					alt=""
-					th:src="@{/icons/search.png}"/>
+					th:src="@{/icons/search.png}" />
 			</button>
 		</div>
 		<table class="table table-hover table-borderless">
@@ -58,7 +56,7 @@
 							target="_blank">
 							<img
 								alt=""
-								th:src="@{/icons/link.png}"/>
+								th:src="@{/icons/link.png}" />
 						</a></th>
 					<td><a
 							th:href="@{/task/{taskId}(taskId=${task.taskId})}"
@@ -67,8 +65,7 @@
 					<td th:text="${task.booth.nbAfter}"></td>
 					<td th:text="${{task.totalWorkingTime}}"></td>
 					<td th:text="${task.booth.category}"></td>
-					<td
-						th:text="${{task.startDate == null ? '---':  task.startDate}}"></td>
+					<td th:text="${{task.startDate == null ? '---':  task.startDate}}"></td>
 					<td
 						th:text="${{task.finishedDate ==null ? '---': task.finishedDate}}"></td>
 					<td><img

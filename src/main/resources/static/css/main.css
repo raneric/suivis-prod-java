@@ -43,7 +43,6 @@ a {
 .drawer-container {
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
 	float: left;
 	background: radial-gradient(circle, rgba(41, 182, 246, 1) 0%,
 		rgba(3, 155, 229, 1) 48%);
@@ -71,11 +70,6 @@ a {
 /*---------------------------------- Drawer -------------------------------------------*/
 
 /*---------------------------------- Home page ----------------------------------------*/
-.home-page-container {
-	display: flex;
-	width: 88%;
-}
-
 .home-btn:hover {
 	transform: scale(1.2);
 }

@@ -3,43 +3,46 @@
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8"/>
+<link
+	rel="stylesheet"
+	th:href="@{/css/main.css}" />
+<meta charset="UTF-8" />
 </head>
 <body>
-	<div th:fragment="drawer">
+
+	<div
+		th:fragment="drawer"
+		class="drawer-container">
 		<div class="link-btn">
 			<a th:href="@{/dashboard}">
 				<img
 					class="img-icon"
-					th:src="@{/icons/dashboard.png}" />
-				<span>Dashboard</span>
+					th:src="@{/icons/dashboard.png}" /> <span>Dashboard</span>
 			</a>
 		</div>
 		<div class="link-btn">
 			<a th:href="@{/task/new}">
 				<img
 					class="img-icon"
-					th:src="@{/icons/document.png}" />
-				<span>New Task</span>
+					th:src="@{/icons/document.png}" /> <span>New Task</span>
 			</a>
 		</div>
 		<div class="link-btn">
 			<a th:href="@{/history}">
 				<img
 					class="img-icon"
-					th:src="@{/icons/list.png}" />
-				<span>History</span>
+					th:src="@{/icons/list.png}" /> <span>History</span>
 			</a>
 		</div>
 		<div class="link-btn">
 			<a th:href="@{/productivity}">
 				<img
 					class="img-icon"
-					th:src="@{/icons/productivity.png}" />
-				<span>Productivity</span>
+					th:src="@{/icons/productivity.png}" /> <span>Productivity</span>
 			</a>
 		</div>
 		<hr />
 	</div>
+
 </body>
 </html>
