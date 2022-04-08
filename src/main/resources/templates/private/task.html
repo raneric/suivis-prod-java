@@ -61,7 +61,7 @@
 					<div class="col-sm">
 						<label
 							for="boothId"
-							class="form-label">Booth ID</label>
+							class="custom-input-label">Booth ID</label>
 						<input
 							th:value="${task == null ? _:  task.booth.boothId}"
 							id="boothId"
@@ -74,7 +74,7 @@
 					<div class="col-sm">
 						<label
 							for="boothUrl"
-							class="form-label">Booth URL</label>
+							class="custom-input-label">Booth URL</label>
 						<input
 							th:value="${task == null ? _:  task.booth.boothUrl}"
 							id="boothUrl"
@@ -90,7 +90,7 @@
 					<div class="col-sm-6">
 						<label
 							for="category"
-							class="form-label">Category</label>
+							class="custom-input-label">Category</label>
 						<input
 							th:value="${task == null ? _:  task.booth.category}"
 							id="category"
@@ -102,9 +102,9 @@
 					<div class="col-sm-3">
 						<label
 							for="nbBefore"
-							class="form-label">Nb Before</label>
+							class="custom-input-label">Nb Before</label>
 						<input
-							th:value="${task == null ? _:  task.booth.nbBefore}"
+							th:value="${task == null ? 0:  task.booth.nbBefore}"
 							id="nbBefore"
 							type="number"
 							class="form-control"
@@ -114,9 +114,9 @@
 					<div class="col-sm-3">
 						<label
 							for="nbBefore"
-							class="form-label">Nb After</label>
+							class="custom-input-label">Nb After</label>
 						<input
-							th:value="${task == null ? _:  task.booth.nbAfter}"
+							th:value="${task == null ? 0:  task.booth.nbAfter}"
 							id="nbAfter"
 							type="number"
 							class="form-control"
@@ -128,7 +128,7 @@
 					<div class="col-sm">
 						<label
 							for="taskType"
-							class="form-label">Task Type</label>
+							class="custom-input-label">Task Type</label>
 						<div class="input-group mb-1">
 							<input
 								th:value="${task == null ? _:  task.taskType}"
@@ -149,7 +149,7 @@
 					<div class="col-sm">
 						<label
 							for="totalWorkingTime"
-							class="form-label">Total Working Time</label>
+							class="custom-input-label">Total Working Time</label>
 						<input
 							id="totalWorkingTime"
 							th:value="${{task == null ? _:  task.totalWorkingTime}}"
@@ -163,7 +163,7 @@
 					<div class="col-sm">
 						<label
 							for="note"
-							class="form-label">Note</label>
+							class="custom-input-label">Note</label>
 						<textarea
 							th:value="${task == null ? _:  task.note}"
 							id="note"
@@ -198,19 +198,15 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td>Start Date: <span
-							th:text="${{task == null ? '---':  task.startDate}}">---</span></td>
+						<td>Start Date: [[${{task == null ? '---': task.startDate}}]]</td>
 					</tr>
 					<tr>
-						<td>Total Working Time : <span
-							th:text="${{(task == null) ? '---': task.totalWorkingTime}}"></span>
-							(hh:mm)
-						</td>
+						<td>Total Working Time : [[${{(task == null) ? '---':
+							task.totalWorkingTime}}]] (hh:mm)</td>
 					</tr>
 					<tr>
-						<td>Productivity:<span
-							th:text="${task == null ? '---':  task.productivity}"></span> %
-						</td>
+						<td>Productivity: [[${task == null ? '---':
+							task.productivity}]] %</td>
 					</tr>
 					<tr>
 						<td>Total Working Time Goal: 00:00 (hh:mm)</td>
@@ -219,9 +215,7 @@
 						<td>To submit before: ---</td>
 					</tr>
 					<tr>
-						<td>Task state: <span
-							th:text="${(task == null) ? '---': task.taskState}"></span>
-						</td>
+						<td>Task state: [[${(task == null) ? '---': task.taskState}]]</td>
 					</tr>
 				</tbody>
 			</table>
