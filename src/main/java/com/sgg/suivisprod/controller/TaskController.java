@@ -52,6 +52,7 @@ public class TaskController {
 		modelView.addAttribute(MAJ_TASK_TYPE, majTask);
 		modelView.addAttribute(CREA_TASK_TYPE, creaTask);
 		modelView.addAttribute(OTHERS_TASK_TYPE, othersTask);
+		
 		modelView.addAttribute("task",currentTask);
 		return TASK_VIEW;
 	}

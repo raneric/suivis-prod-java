@@ -21,5 +21,4 @@ public final class AppCont {
 	public static final String CREA_TASK_TYPE = "Crea";
 	public static final String OTHERS_TASK_TYPE = "Others";
 
-
 }
