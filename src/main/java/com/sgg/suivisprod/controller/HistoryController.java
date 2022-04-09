@@ -30,16 +30,9 @@ public class HistoryController {
 	@GetMapping(HISTORY_PATH)
 	public String history(Model viewModel, Principal userPrinicipal) {
 		User       user    = userRepository.findByUsername(userPrinicipal.getName());
-		Pageable   page    = PageRequest.of(0, 2);
-		
-		List<Task> doneData = taskRepository.findDoneTask(user.getUserId(), page);
-		List<Task> progressData = taskRepository.findInProgressTask(user.getUserId(), page);
-		List<Task> stdbyData = taskRepository.findStdByTask(user.getUserId(), page);
-		List<Task> todoData = taskRepository.findTodoTask(user.getUserId(), page);
-		doneData.addAll(progressData);
-		doneData.addAll(todoData);
-		doneData.addAll(stdbyData);
-		viewModel.addAttribute("tasks", doneData);
+		Pageable   page    = PageRequest.of(0, 8);
+		List<Task> testDataToViewModel = taskRepository.findDoneTask(user.getUserId(), page);
+		viewModel.addAttribute("tasks", testDataToViewModel);
 		return HISTORY_VIEW;
 	}
 
