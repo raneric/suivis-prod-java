@@ -68,10 +68,23 @@
 					<td th:text="${{task.startDate == null ? '---':  task.startDate}}"></td>
 					<td
 						th:text="${{task.finishedDate ==null ? '---': task.finishedDate}}"></td>
-					<td><img
-						alt=""
-						th:src="@{'/icons/'+${task.taskState}+'.png'}" /> <span
-						th:text="${task.taskState}"></span></td>
+					<td><span
+						th:if="${task.taskState =='done'}"
+						class="badge rounded-pill bg-success"><img
+							alt="tast stete icone"
+							th:src="@{'/icons/done.png'}" /> [[${task.taskState}]]</span> <span
+						th:if="${task.taskState =='in_progress'}"
+						class="badge rounded-pill bg-warning"><img
+							alt="tast stete icone"
+							th:src="@{'/icons/in_progress.png'}" /> [[${task.taskState}]]</span> <span
+						th:if="${task.taskState =='todo'}"
+						class="badge rounded-pill bg-info"><img
+							alt="tast stete icone"
+							th:src="@{'/icons/todo.png'}" /> [[${task.taskState}]]</span> <span
+						th:if="${task.taskState =='stdby'}"
+						class="badge rounded-pill bg-danger"><img
+							alt="tast stete icone"
+							th:src="@{'/icons/stdby.png'}" /> [[${task.taskState}]]</span></td>
 				</tr>
 			</tbody>
 		</table>
