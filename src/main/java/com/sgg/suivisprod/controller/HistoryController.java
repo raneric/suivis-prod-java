@@ -54,7 +54,8 @@ public class HistoryController {
 	 * @return int of total page number
 	 */
 	private int getPageNumber(int totalTaskCount) {
-		return totalTaskCount / ROW_LIMIT;
+		int totalPageNumber = totalTaskCount / ROW_LIMIT;
+		return (totalPageNumber) == 0 ? 1 : totalPageNumber;
 	}
 
 	/**
@@ -68,7 +69,7 @@ public class HistoryController {
 		List<Integer> pageList       = new ArrayList<>();
 		int           startPageRange = getStartRange(currentPage);
 
-		if (startPageRange > totalPageNumber - PAGINATION_LIMIT) {
+		if (totalPageNumber > PAGINATION_LIMIT && startPageRange > totalPageNumber - PAGINATION_LIMIT) {
 			startPageRange = totalPageNumber - PAGINATION_LIMIT + 1;
 		}
 
@@ -82,6 +83,11 @@ public class HistoryController {
 		return pageList;
 	}
 
+	/**
+	 * 
+	 * @param currentPage
+	 * @return
+	 */
 	private int getStartRange(int currentPage) {
 		String totalPageAsString = Integer.toString(currentPage);
 		int    value             = Integer.parseInt(totalPageAsString.substring(totalPageAsString.length() - 1));

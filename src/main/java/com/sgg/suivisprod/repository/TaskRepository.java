@@ -15,7 +15,7 @@ public interface TaskRepository extends PagingAndSortingRepository<Task, String>
 	@Query(value = "{'user':{'userId':?0}}")
 	List<Task> findAllByUserId(String userId, Pageable page);
 
-	@Query(value = "{'user.userId':?0,'taskState':?1}")
+	@Aggregation(pipeline = {"{'$match':{'user.userId':?0,'taskState':?1}}", "{'$sort':{'finishedDate':-1}}"})
 	List<Task> findByTaskType(String userId, String taskType, Pageable page);
 
 	@Query(value = "{'taskId':?0}")
