@@ -34,7 +34,7 @@ public class HistoryController {
 
 	@GetMapping(HISTORY_PATH)
 	public String history(Model viewModel, Principal userPrinicipal, @RequestParam int currentPage) {
-		User user               = userRepository.findByUsername(userPrinicipal.getName());
+		User user = userRepository.findByUsername(userPrinicipal.getName());
 
 		Pageable   page           = PageRequest.of(currentPage - 1, ROW_LIMIT);
 		List<Task> taskListToview = taskRepository.findByTaskType(user.getUserId(), "done", page);
@@ -65,21 +65,36 @@ public class HistoryController {
 	 * @return list of Integer
 	 */
 	private List<Integer> buildPaginationList(int currentPage, int totalPageNumber) {
-		List<Integer> pageList   = new ArrayList<>();
-		int           currentRow = currentPage == 0 ? 1 : currentPage;
+		List<Integer> pageList       = new ArrayList<>();
+		int           startPageRange = getStartRange(currentPage);
 
-		if (currentRow > totalPageNumber - PAGINATION_LIMIT) {
-			currentRow = totalPageNumber - PAGINATION_LIMIT + 1;
+		if (startPageRange > totalPageNumber - PAGINATION_LIMIT) {
+			startPageRange = totalPageNumber - PAGINATION_LIMIT + 1;
 		}
 
 		for (int i = 1; i <= PAGINATION_LIMIT; i++) {
-			pageList.add(currentRow);
-			if (currentRow == totalPageNumber) {
+			pageList.add(startPageRange);
+			if (startPageRange == totalPageNumber) {
 				break;
 			}
-			currentRow++;
+			startPageRange++;
 		}
 		return pageList;
+	}
+
+	private int getStartRange(int currentPage) {
+		String totalPageAsString = Integer.toString(currentPage);
+		int    value             = Integer.parseInt(totalPageAsString.substring(totalPageAsString.length() - 1));
+		int    startRange        = 0;
+
+		if (value <= 5) {
+			startRange = (totalPageAsString.length() < 2) ? currentPage - value + 1 : currentPage - 4;
+		}
+		else if (value > 5) {
+			startRange = currentPage - value + 6;
+		}
+
+		return startRange;
 	}
 
 }
