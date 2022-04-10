@@ -67,18 +67,18 @@ public class HistoryController {
 	 */
 	private List<Integer> buildPaginationList(int currentPage, int totalPageNumber) {
 		List<Integer> pageList       = new ArrayList<>();
-		int           startPageRange = getStartRange(currentPage);
+		int           pageRangeStartIndex = getPageRangeStartIndex(currentPage);
 
-		if (totalPageNumber > PAGINATION_LIMIT && startPageRange > totalPageNumber - PAGINATION_LIMIT) {
-			startPageRange = totalPageNumber - PAGINATION_LIMIT + 1;
+		if (totalPageNumber > PAGINATION_LIMIT && pageRangeStartIndex > totalPageNumber - PAGINATION_LIMIT) {
+			pageRangeStartIndex = totalPageNumber - PAGINATION_LIMIT + 1;
 		}
 
 		for (int i = 1; i <= PAGINATION_LIMIT; i++) {
-			pageList.add(startPageRange);
-			if (startPageRange == totalPageNumber) {
+			pageList.add(pageRangeStartIndex);
+			if (pageRangeStartIndex == totalPageNumber) {
 				break;
 			}
-			startPageRange++;
+			pageRangeStartIndex++;
 		}
 		return pageList;
 	}
@@ -88,19 +88,19 @@ public class HistoryController {
 	 * @param currentPage
 	 * @return
 	 */
-	private int getStartRange(int currentPage) {
-		String totalPageAsString = Integer.toString(currentPage);
-		int    value             = Integer.parseInt(totalPageAsString.substring(totalPageAsString.length() - 1));
-		int    startRange        = 0;
+	private int getPageRangeStartIndex(int currentPage) {
+		String stringTotalPageNumber = Integer.toString(currentPage);
+		int    value             = Integer.parseInt(stringTotalPageNumber.substring(stringTotalPageNumber.length() - 1));
+		int    startRangeIndex        = 0;
 
 		if (value <= 5) {
-			startRange = (totalPageAsString.length() < 2) ? currentPage - value + 1 : currentPage - 4;
+			startRangeIndex = (stringTotalPageNumber.length() < 2) ? currentPage - value + 1 : currentPage - 4;
 		}
 		else if (value > 5) {
-			startRange = currentPage - value + 6;
+			startRangeIndex = currentPage - value + 6;
 		}
 
-		return startRange;
+		return startRangeIndex;
 	}
 
 }
