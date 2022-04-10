@@ -196,7 +196,9 @@ a {
 	margin: auto;
 	position: relative;
 }
-
+.table-pagination a:visited{
+	color:#0d6efd;
+}
 .search-input {
 	width: 30%;
 }

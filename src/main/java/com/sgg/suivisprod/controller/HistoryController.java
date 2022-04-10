@@ -35,13 +35,12 @@ public class HistoryController {
 	@GetMapping(HISTORY_PATH)
 	public String history(Model viewModel, Principal userPrinicipal, @RequestParam int currentPage) {
 		User user               = userRepository.findByUsername(userPrinicipal.getName());
-		int  zeroBasedPageIndex = currentPage - 1;
 
-		Pageable   page           = PageRequest.of(zeroBasedPageIndex, ROW_LIMIT);
+		Pageable   page           = PageRequest.of(currentPage - 1, ROW_LIMIT);
 		List<Task> taskListToview = taskRepository.findByTaskType(user.getUserId(), "done", page);
 
 		int           totalPageNumber = getPageNumber(taskRepository.countAllTask(user.getUserId(), "done"));
-		List<Integer> paginationList  = buildPaginationList(zeroBasedPageIndex, totalPageNumber);
+		List<Integer> paginationList  = buildPaginationList(currentPage, totalPageNumber);
 
 		viewModel.addAttribute("tasks", taskListToview);
 		viewModel.addAttribute("totalPageNumber", totalPageNumber);
@@ -59,7 +58,7 @@ public class HistoryController {
 	}
 
 	/**
-	 * Build pagination list for history view pagination
+	 * Build 1-based pagination list for history view pagination
 	 * 
 	 * @param currentPage
 	 * @param totalPageNumber
@@ -75,14 +74,11 @@ public class HistoryController {
 
 		for (int i = 1; i <= PAGINATION_LIMIT; i++) {
 			pageList.add(currentRow);
-
 			if (currentRow == totalPageNumber) {
 				break;
 			}
-
 			currentRow++;
 		}
-
 		return pageList;
 	}
 

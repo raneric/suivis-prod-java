@@ -103,6 +103,7 @@
 				<li
 					th:each="pagination : ${paginationList}"
 					class="page-item"
+					th:classappend="${param.currentPage[0]==#strings.toString(pagination)} ? 'active' :_"
 					aria-current="page"><a
 						th:text="${pagination}"
 						class="page-link"
