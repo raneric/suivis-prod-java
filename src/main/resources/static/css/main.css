@@ -195,12 +195,17 @@ a {
 .table-pagination {
 	margin: auto;
 	position: relative;
+	color: wheat;
 }
-.table-pagination a:visited{
-	color:#0d6efd;
-}
+
 .search-input {
 	width: 30%;
+}
+
+.active-page a {
+	background-color: #002c46;
+	border-color: #002c46;
+	color: wheat;
 }
 
 .table-hrader {
