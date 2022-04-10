@@ -68,20 +68,20 @@
 					<td th:text="${{task.startDate == null ? '---':  task.startDate}}"></td>
 					<td
 						th:text="${{task.finishedDate ==null ? '---': task.finishedDate}}"></td>
-					<td><span
-						th:if="${task.taskState =='done'}"
+					<td th:switch="${task.taskState}"><span
+						th:case="done"
 						class="badge rounded-pill bg-success"><img
 							alt="tast stete icone"
 							th:src="@{'/icons/done.png'}" /> [[${task.taskState}]]</span> <span
-						th:if="${task.taskState =='in_progress'}"
+						th:case="in_progress"
 						class="badge rounded-pill bg-warning"><img
 							alt="tast stete icone"
 							th:src="@{'/icons/in_progress.png'}" /> [[${task.taskState}]]</span> <span
-						th:if="${task.taskState =='todo'}"
+						th:case="todo"
 						class="badge rounded-pill bg-info"><img
 							alt="tast stete icone"
 							th:src="@{'/icons/todo.png'}" /> [[${task.taskState}]]</span> <span
-						th:if="${task.taskState =='stdby'}"
+						th:case="stdby"
 						class="badge rounded-pill bg-danger"><img
 							alt="tast stete icone"
 							th:src="@{'/icons/stdby.png'}" /> [[${task.taskState}]]</span></td>
@@ -92,34 +92,38 @@
 			class="table-pagination"
 			aria-label="...">
 			<ul class="pagination pagination-sm">
-				<li class="page-item"><a
+				<li
+					class="page-item"
+					th:unless="${paginationList[0]==1}"><a
 						class="page-link"
-						href="#"
+						th:href="@{'/history?currentPage='+${paginationList[0] - 1}}"
 						aria-label="Previous">
 						<span aria-hidden="true">&laquo;</span>
 					</a>
 				<li
-					class="page-item active"
-					aria-current="page"><span class="page-link">1</span></li>
-				<li class="page-item"><a
+					th:each="pagination : ${paginationList}"
+					class="page-item"
+					aria-current="page"><a
+						th:text="${pagination}"
 						class="page-link"
-						href="#">2</a></li>
-				<li class="page-item"><a
-						class="page-link"
-						href="#">3</a></li>
-				<li class="page-item"><a
-						class="page-link"
-						href="#">...</a></li>
-				<li class="page-item"><a
-						th:text="${totalPageNumber}"
-						class="page-link"
-						href="#">...</a></li>
-				<li class="page-item"><a
-						class="page-link"
-						href="#"
-						aria-label="Next">
-						<span aria-hidden="true">&raquo;</span>
-					</a></li>
+						th:href="@{'/history?currentPage='+${pagination}}"></a></li>
+				<th:block
+					th:unless="${totalPageNumber==paginationList[paginationList.size - 1]}">
+					<li class="page-item"><a
+							class="page-link"
+							href="#">...</a></li>
+					<li class="page-item"><a
+							th:text="${totalPageNumber}"
+							th:href="@{'/history?currentPage='+${totalPageNumber}}"
+							class="page-link"
+							href="#">...</a></li>
+					<li class="page-item"><a
+							class="page-link"
+							th:href="@{'/history?currentPage='+${paginationList[4]  + 1}}"
+							aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
+						</a></li>
+				</th:block>
 			</ul>
 		</nav>
 	</div>

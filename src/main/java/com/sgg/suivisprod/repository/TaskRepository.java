@@ -12,24 +12,15 @@ import com.sgg.suivisprod.domain.Task;
 
 @Repository
 public interface TaskRepository extends PagingAndSortingRepository<Task, String> {
-	@Query(value="{'user':{'userId':?0}}")
-	List<Task> findByUserId(String userId, Pageable page);
-	
-	@Query(value="{'taskId':?0}")
+	@Query(value = "{'user':{'userId':?0}}")
+	List<Task> findAllByUserId(String userId, Pageable page);
+
+	@Query(value = "{'user.userId':?0,'taskState':?1}")
+	List<Task> findByTaskType(String userId, String taskType, Pageable page);
+
+	@Query(value = "{'taskId':?0}")
 	Task findOneByTaskId(int taskId);
-	
-	@Query(value="{'taskState':'todo', 'user':{'userId':?0}}")
-	List<Task> findTodoTask(String userId, Pageable page);
-	
-	@Query(value="{'taskState':'in_progress', 'user':{'userId':?0}}")
-	List<Task> findInProgressTask(String userId, Pageable page);
-	
-	@Query(value="{'taskState':'done', 'user':{'userId':?0}}")
-	List<Task> findDoneTask(String userId, Pageable page);
-	
-	@Query(value="{'taskState':'stdby', 'user':{'userId':?0}}")
-	List<Task> findStdByTask(String userId, Pageable page);
-	
-	@Aggregation(pipeline = {"{'$match': {'user':{'userId':?0}}}","{'$count': 'totalTask'}"})
-	Integer countAllTask(String userId);
+
+	@Aggregation(pipeline = {"{'$match':{'user.userId':?0,'taskState':?1}}", "{'$count':'totalTask'}"})
+	Integer countAllTask(String userId, String taskState);
 }
