@@ -94,7 +94,7 @@ public class PaginationHelper {
 		int    startRangeIndex       = 0;
 
 		if (value <= 5) {
-			startRangeIndex = (stringTotalPageNumber.length() < 2) ? 1 : currentPage - 4 - value;
+			startRangeIndex = (stringTotalPageNumber.length() < 2) ? 1 : currentPage - value + 1;
 		}
 		else if (value > 5) {
 			startRangeIndex = currentPage - value + 6;
