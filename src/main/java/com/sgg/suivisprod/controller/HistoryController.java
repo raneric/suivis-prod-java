@@ -3,15 +3,14 @@ package com.sgg.suivisprod.controller;
 import static com.sgg.suivisprod.utils.AppCont.HISTORY_PATH;
 import static com.sgg.suivisprod.utils.AppCont.HISTORY_VIEW;
 import static com.sgg.suivisprod.utils.PaginationHelper.ROW_LIMIT;
-import static com.sgg.suivisprod.utils.PaginationHelper.PAGINATION_LIMIT;
 
 import java.security.Principal;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,9 +35,10 @@ public class HistoryController {
 	public String history(Model viewModel, Principal userPrinicipal, @RequestParam int currentPage) {
 		User user = userRepository.findByUsername(userPrinicipal.getName());
 
-		Pageable   page           = PageRequest.of(currentPage - 1, ROW_LIMIT);
+		Pageable page = PageRequest.of(currentPage - 1, ROW_LIMIT, Sort.by("startDate").descending());
+
 		List<Task> taskListToview = taskRepository.findByTaskType(user.getUserId(), "done", page);
-		int        totalTask      = taskRepository.countAllTask(user.getUserId(), "done");
+		int        totalTask      = taskRepository.countTaskByTaskType(user.getUserId(), "done");
 
 		PaginationHelper pagination = new PaginationHelper(totalTask, currentPage);
 		pagination.build();
