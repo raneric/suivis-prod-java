@@ -68,7 +68,7 @@ public class PaginationHelper {
 	private void buildPaginationList() {
 		int pageRangeStartIndex = getPageRangeStartIndex();
 
-		if (totalPageNumber > PAGINATION_LIMIT && pageRangeStartIndex > totalPageNumber - PAGINATION_LIMIT) {
+		if (haveMoreTahnOnePage() && isTheLastXPage(pageRangeStartIndex)) {
 			pageRangeStartIndex = totalPageNumber - PAGINATION_LIMIT + 1;
 		}
 
@@ -79,7 +79,14 @@ public class PaginationHelper {
 			}
 			pageRangeStartIndex++;
 		}
+	}
 
+	private boolean haveMoreTahnOnePage() {
+		return totalPageNumber > PAGINATION_LIMIT;
+	}
+
+	private boolean isTheLastXPage(int pageRangeStartIndex) {
+		return pageRangeStartIndex > totalPageNumber - PAGINATION_LIMIT;
 	}
 
 	/**
@@ -97,7 +104,7 @@ public class PaginationHelper {
 			startRangeIndex = (stringTotalPageNumber.length() < 2) ? 1 : currentPage - value + 1;
 		}
 		else if (value > 5) {
-			startRangeIndex = currentPage - value + 6;
+			startRangeIndex = currentPage - value + PAGINATION_LIMIT + 1;
 		}
 
 		return startRangeIndex;

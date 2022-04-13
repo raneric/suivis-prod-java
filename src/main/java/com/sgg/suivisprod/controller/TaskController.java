@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sgg.suivisprod.domain.Task;
@@ -29,7 +30,7 @@ public class TaskController {
 	@Autowired
 	TaskRepository taskRepository;
 
-	@GetMapping(NEW_TASK_PATH)
+	@PostMapping(NEW_TASK_PATH)
 	public String newTask(Model modelView) {
 		TaskType majTask    = taskTypeRepository.findByTaskName(MAJ_TASK_TYPE);
 		TaskType creaTask   = taskTypeRepository.findByTaskName(CREA_TASK_TYPE);
@@ -40,6 +41,13 @@ public class TaskController {
 		modelView.addAttribute(OTHERS_TASK_TYPE, othersTask);
 		return TASK_VIEW;
 	}
+	
+	@GetMapping(NEW_TASK_PATH)
+	public String newTask() {
+
+		return TASK_VIEW;
+	}
+	
 	
 	@GetMapping("/{taskId}")
 	public String openTask(@PathVariable int taskId,Model modelView) {

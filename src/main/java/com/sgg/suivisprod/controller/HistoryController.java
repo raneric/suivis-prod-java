@@ -5,6 +5,7 @@ import static com.sgg.suivisprod.utils.AppCont.HISTORY_VIEW;
 import static com.sgg.suivisprod.utils.PaginationHelper.ROW_LIMIT;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +38,8 @@ public class HistoryController {
 
 		Pageable page = PageRequest.of(currentPage - 1, ROW_LIMIT, Sort.by("startDate").descending());
 
-		List<Task> taskListToview = taskRepository.findByTaskType(user.getUserId(), "done", page);
-		int        totalTask      = taskRepository.countTaskByTaskType(user.getUserId(), "done");
+		List<Task> taskListToview = taskRepository.findAllByUserId(user.getUserId(), page);
+		int        totalTask      = taskRepository.countAllTask(user.getUserId());
 
 		PaginationHelper pagination = new PaginationHelper(totalTask, currentPage);
 		pagination.build();
