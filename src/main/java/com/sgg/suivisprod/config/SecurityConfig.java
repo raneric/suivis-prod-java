@@ -1,4 +1,12 @@
 package com.sgg.suivisprod.config;
+import static com.sgg.suivisprod.constant.PathConst.DASHBOARD_PATH;
+import static com.sgg.suivisprod.constant.PathConst.HISTORY_PATH;
+import static com.sgg.suivisprod.constant.PathConst.LOGIN_PATH;
+import static com.sgg.suivisprod.constant.PathConst.LOGOUT_PATH;
+import static com.sgg.suivisprod.constant.PathConst.NEW_TASK_PATH;
+import static com.sgg.suivisprod.constant.PathConst.PRODUCTIVITY_PATH;
+import static com.sgg.suivisprod.constant.PathConst.ROOT_PATH;
+
 import javax.annotation.Resource;
 
 import org.springframework.context.annotation.Bean;
@@ -13,14 +21,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.sgg.suivisprod.service.CustomUserDetailsService;
 import com.sgg.suivisprod.utils.Roles;
-
-import static com.sgg.suivisprod.utils.AppCont.DASHBOARD_PATH;
-import static com.sgg.suivisprod.utils.AppCont.HISTORY_PATH;
-import static com.sgg.suivisprod.utils.AppCont.NEW_TASK_PATH;
-import static com.sgg.suivisprod.utils.AppCont.PRODUCTIVITY_PATH;
-import static com.sgg.suivisprod.utils.AppCont.ROOT_PATH;
-import static com.sgg.suivisprod.utils.AppCont.LOGOUT_PATH;
-import static com.sgg.suivisprod.utils.AppCont.LOGIN_PATH;
 
 @Configuration
 @EnableWebSecurity

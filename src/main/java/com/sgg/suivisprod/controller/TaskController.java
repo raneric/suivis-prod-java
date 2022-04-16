@@ -1,11 +1,11 @@
 package com.sgg.suivisprod.controller;
 
-import static com.sgg.suivisprod.utils.AppCont.CREA_TASK_TYPE;
-import static com.sgg.suivisprod.utils.AppCont.MAJ_TASK_TYPE;
-import static com.sgg.suivisprod.utils.AppCont.NEW_TASK_PATH;
-import static com.sgg.suivisprod.utils.AppCont.OTHERS_TASK_TYPE;
-import static com.sgg.suivisprod.utils.AppCont.TASK_PATH;
-import static com.sgg.suivisprod.utils.AppCont.TASK_VIEW;
+import static com.sgg.suivisprod.constant.AppCont.CREA_TASK_TYPE;
+import static com.sgg.suivisprod.constant.AppCont.MAJ_TASK_TYPE;
+import static com.sgg.suivisprod.constant.AppCont.OTHERS_TASK_TYPE;
+import static com.sgg.suivisprod.constant.PathConst.NEW_TASK_PATH;
+import static com.sgg.suivisprod.constant.PathConst.TASK_PATH;
+import static com.sgg.suivisprod.constant.PathConst.TASK_VIEW;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,7 +30,7 @@ public class TaskController {
 	@Autowired
 	TaskRepository taskRepository;
 
-	@PostMapping(NEW_TASK_PATH)
+	@GetMapping(NEW_TASK_PATH)
 	public String newTask(Model modelView) {
 		TaskType majTask    = taskTypeRepository.findByTaskName(MAJ_TASK_TYPE);
 		TaskType creaTask   = taskTypeRepository.findByTaskName(CREA_TASK_TYPE);
@@ -42,7 +42,7 @@ public class TaskController {
 		return TASK_VIEW;
 	}
 	
-	@GetMapping(NEW_TASK_PATH)
+	@PostMapping(NEW_TASK_PATH)
 	public String newTask() {
 
 		return TASK_VIEW;

@@ -14,7 +14,7 @@ import com.sgg.suivisprod.domain.Task;
 public interface TaskRepository extends PagingAndSortingRepository<Task, String> {
 	@Query(value = "{'user':{'userId':?0}}")
 	List<Task> findAllByUserId(String userId, Pageable page);
-
+	
 	@Query(value = "{'user':{'userId':?0},'taskState':?1}")
 	List<Task> findByTaskType(String userId, String taskType, Pageable page);
 

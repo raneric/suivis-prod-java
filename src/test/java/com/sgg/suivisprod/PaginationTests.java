@@ -30,9 +30,9 @@ public class PaginationTests {
 	
 	@Test
 	void lastPageShouldReturnLastFivePage() {
-		pagination = new PaginationHelper(100, 100);
+		pagination = new PaginationHelper(100, 13);
 		pagination.build();
-		assertThat(pagination.getPagination().get(0)).isEqualTo(96);
-		assertThat(pagination.getPagination().get(4)).isEqualTo(100);
+		assertThat(pagination.getPagination().get(0)).isEqualTo(9);
+		assertThat(pagination.getPagination().get(4)).isEqualTo(13);
 	}
 }

@@ -54,8 +54,8 @@ public class PaginationHelper {
 	}
 
 	private void calculatePageNumber() {
-		int pageNumber = this.totalTaskCount / ROW_LIMIT;
-		this.totalPageNumber = (pageNumber) == 0 ? 1 : pageNumber;
+		int pageNumber = (this.totalTaskCount / ROW_LIMIT)+1;
+		this.totalPageNumber = pageNumber;
 	}
 
 	/**

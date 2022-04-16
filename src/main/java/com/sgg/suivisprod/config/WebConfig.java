@@ -1,8 +1,8 @@
 package com.sgg.suivisprod.config;
 
-import static com.sgg.suivisprod.utils.AppCont.HOME_VIEW;
-import static com.sgg.suivisprod.utils.AppCont.LOGIN_PATH;
-import static com.sgg.suivisprod.utils.AppCont.LOGIN_VIEW;
+import static com.sgg.suivisprod.constant.PathConst.HOME_VIEW;
+import static com.sgg.suivisprod.constant.PathConst.LOGIN_PATH;
+import static com.sgg.suivisprod.constant.PathConst.LOGIN_VIEW;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
