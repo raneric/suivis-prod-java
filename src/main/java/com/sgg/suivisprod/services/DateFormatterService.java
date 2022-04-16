@@ -1,4 +1,4 @@
-package com.sgg.suivisprod.service;
+package com.sgg.suivisprod.services;
 
 import java.text.DateFormat;
 import java.text.ParseException;

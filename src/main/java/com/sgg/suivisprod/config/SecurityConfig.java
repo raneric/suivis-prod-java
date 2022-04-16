@@ -19,7 +19,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.sgg.suivisprod.service.CustomUserDetailsService;
+import com.sgg.suivisprod.services.CustomUserDetailsService;
 import com.sgg.suivisprod.utils.Roles;
 
 @Configuration

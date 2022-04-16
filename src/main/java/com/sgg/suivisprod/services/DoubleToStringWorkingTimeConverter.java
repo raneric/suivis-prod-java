@@ -1,4 +1,4 @@
-package com.sgg.suivisprod.service;
+package com.sgg.suivisprod.services;
 
 import org.springframework.core.convert.converter.Converter;
 import static com.sgg.suivisprod.utils.TimeUtils.convertDoubleTimeAsFormatedString;
