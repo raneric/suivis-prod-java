@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html
 	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+	xmlns:th="http://www.thymeleaf.org"
+	th:fragment="app_layout(title,content)">
 <head>
 <meta charset="UTF-8" />
 <link
@@ -12,10 +13,13 @@
 <link
 	rel="stylesheet"
 	th:href="@{/css/main.css}" />
-<title>Suivis-prod</title>
+<script
+	type="text/javascript"
+	th:src="@{/js/script.js}"></script>
+<title th:replace="${title}">Suivis-prod</title>
 <body>
 	<th:block th:insert="~{fragments/appBar :: app_bar}"></th:block>
 	<th:block th:insert="~{fragments/appDrawer :: drawer}"></th:block>
-	<th:block th:insert="~{fragments/homePage :: home_page}"></th:block>
+	<div th:replace="${content}"></div>
 </body>
 </html>

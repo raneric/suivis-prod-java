@@ -1,4 +1,3 @@
-
 function openTaskTypeModal() {
 	let taskTypeModal = document.getElementById('task-type-modal');
 	taskTypeModal.style.display = "flex";
@@ -59,7 +58,6 @@ function handleStatusCom(event) {
 		case "statu-iv":
 			badgeElement = document.getElementById("status-iv-badge");
 			break;
-
 	}
 	badgeElement.innerHTML = event.target.value;
 }
