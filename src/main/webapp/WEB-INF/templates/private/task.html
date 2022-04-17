@@ -207,6 +207,7 @@
 				</tbody>
 			</table>
 		</div>
+		<th:block th:unless="${task == null}" th:insert="~{fragments/deleteFab :: delete-fab}"></th:block>
 	</div>
 </body>
 </html>
