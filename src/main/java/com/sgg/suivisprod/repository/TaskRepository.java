@@ -25,7 +25,7 @@ public interface TaskRepository extends PagingAndSortingRepository<Task, String>
 	Task findOneByTaskId(int taskId);
 
 	@Aggregation(pipeline = {"{'$match':{'user.userId':?0}}", "{'$count':'totalTask'}"})
-	Integer countAllTask(String userId);
+	Integer countAllTaskByUserId(String userId);
 	
 	@Aggregation(pipeline = {"{'$match':{'user.username':?0}}", "{'$count':'totalTask'}"})
 	Integer countAllTaskByUserName(String userName);

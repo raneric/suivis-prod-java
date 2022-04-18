@@ -45,20 +45,6 @@ public class PaginationService {
 		return pagination;
 	}
 
-	public int getTotalPageNumber(String username) {
-		int totalTaskCount = taskRepository.countAllTaskByUserName(username);
-		int pageNumber = (totalTaskCount / ROW_LIMIT) + 1;
-		return pageNumber;
-	}
-
-	private boolean haveMoreTahnOnePage(int totalPageNumber) {
-		return totalPageNumber > PAGINATION_LIMIT;
-	}
-
-	private boolean isTheLastXPage(int pageRangeStartIndex, int totalPageNumber) {
-		return pageRangeStartIndex > totalPageNumber - PAGINATION_LIMIT;
-	}
-
 	/**
 	 * 
 	 * @param currentPage
@@ -79,4 +65,19 @@ public class PaginationService {
 
 		return startRangeIndex;
 	}
+	
+	public int getTotalPageNumber(String username) {
+		int totalTaskCount = taskRepository.countAllTaskByUserName(username);
+		int pageNumber = (totalTaskCount / ROW_LIMIT) + 1;
+		return pageNumber;
+	}
+
+	private boolean haveMoreTahnOnePage(int totalPageNumber) {
+		return totalPageNumber > PAGINATION_LIMIT;
+	}
+
+	private boolean isTheLastXPage(int pageRangeStartIndex, int totalPageNumber) {
+		return pageRangeStartIndex > totalPageNumber - PAGINATION_LIMIT;
+	}
+
 }

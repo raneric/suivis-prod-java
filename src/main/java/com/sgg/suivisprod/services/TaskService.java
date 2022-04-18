@@ -12,7 +12,6 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.sgg.suivisprod.domain.Task;
-import com.sgg.suivisprod.domain.User;
 import com.sgg.suivisprod.repository.TaskRepository;
 import com.sgg.suivisprod.repository.UserRepository;
 
@@ -21,9 +20,6 @@ public class TaskService {
 
 	@Autowired
 	private TaskRepository taskRepository;
-
-	@Autowired
-	private UserRepository userRepository;
 
 	public List<Task> findByUserAndPage(String userName, int currentPage) {
 		Pageable   page           = PageRequest

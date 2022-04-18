@@ -14,18 +14,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sgg.suivisprod.domain.Task;
-import com.sgg.suivisprod.domain.User;
-import com.sgg.suivisprod.repository.TaskRepository;
-import com.sgg.suivisprod.repository.UserRepository;
 import com.sgg.suivisprod.services.PaginationService;
 import com.sgg.suivisprod.services.TaskService;
 
 @Controller
 public class HistoryController {
-
-	@Autowired
-	TaskRepository taskRepository;
-
+	
 	@Autowired
 	TaskService taskService;
 
