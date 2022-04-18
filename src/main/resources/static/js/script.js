@@ -1,24 +1,27 @@
-function openTaskTypeModal() {
-	let taskTypeModal = document.getElementById('task-type-modal');
-	taskTypeModal.style.display = "flex";
-}
+//----------------------------Modal function section ----------------------------------------------
+let openTaskTypeModal = openModal('task-type-modal');
+let openStatusComModal = openModal('booth-status-modal');
+let openConfirmationComModal = openModal('confirmation-modal');
 
-function openStatusComModal() {
-	let taskTypeModal = document.getElementById('booth-status-modal');
-	taskTypeModal.style.display = "flex";
-}
-
-function closeModal(event) {
-	switch (event.target.id) {
-		case 'task-type':
-			document.getElementById('task-type-modal').style.display = "none";
-			break;
-		case 'status-com':
-			document.getElementById('booth-status-modal').style.display = "none";
-			break;
+function openModal(elementId) {
+	return function() {
+		let taskTypeModal = document.getElementById(elementId);
+		taskTypeModal.style.display = "flex";
 	}
 }
 
+let closeTaskTypeModal = closeModal('task-type-modal');
+let closeStatusComModal = closeModal('booth-status-modal');
+let closeConfirmationComModal = closeModal('confirmation-modal');
+
+function closeModal(elementId) {
+	return function() {
+		document.getElementById(elementId).style.display = "none";
+	}
+}
+//---------------------------------------------------------------------------------------------------
+
+//----------------------------Task form function section ----------------------------------------------
 function clickedTaskType(event) {
 	let tasTypeInput = document.getElementById('taskType');
 	tasTypeInput.value = event.target.innerHTML;
@@ -62,11 +65,11 @@ function handleStatusCom(event) {
 	badgeElement.innerHTML = event.target.value;
 }
 
-function handleUrlOnChange(event){
-	if(event.target.value!==""){
+function handleUrlOnChange(event) {
+	if (event.target.value !== "") {
 		let boothId = getBoothIdFromUrl(event.target.value);
 		document.getElementById("boothId").value = boothId;
-	}else{
+	} else {
 		document.getElementById("boothId").value = "";
 	}
 }

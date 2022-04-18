@@ -263,6 +263,16 @@ a {
 	flex-direction: row;
 }
 
+.modal-confirmation-content {
+	background-color: #fefefe;
+	margin: auto;
+	padding: 10px;
+	border: 1px solid #888;
+	width: 300px;
+	display: grid;
+	row-gap:1em;
+}
+
 .modal-close-btn {
 	width: 65px;
 	height: 40px;
@@ -301,7 +311,7 @@ a {
 	height: 60px;
 	border-radius: 50%;
 	width: 60px;
-	border: none;
+	border: 1px dashed red;
 	position: absolute;
 	bottom: 0;
 	right: 0;

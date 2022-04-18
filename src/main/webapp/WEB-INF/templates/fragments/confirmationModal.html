@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+</head>
+<body>
+	<div
+		th:fragment="modal_confirmation"
+		id="confirmation-modal"
+		class="modal-container">
+		<div class="modal-confirmation-content">
+			<span>Are you sure that you want to delete booth
+				[[${task.taskId}]]?</span>
+			<button class="btn btn-danger">Yes</button>
+			<button
+				onclick="closeConfirmationComModal()"
+				class="btn btn-success">No</button>
+		</div>
+	</div>
+</body>
+</html>
