@@ -36,9 +36,9 @@ public class TaskController {
 		return TASK_VIEW;
 	}
 
+	//------------------TODO handle submit request--------------------
 	@PostMapping(NEW_TASK_PATH)
 	public String newTask() {
-
 		return TASK_VIEW;
 	}
 

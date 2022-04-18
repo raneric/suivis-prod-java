@@ -1,4 +1,5 @@
 package com.sgg.suivisprod.config;
+
 import static com.sgg.suivisprod.constant.PathConst.DASHBOARD_PATH;
 import static com.sgg.suivisprod.constant.PathConst.HISTORY_PATH;
 import static com.sgg.suivisprod.constant.PathConst.TASK_PATH;
@@ -52,7 +53,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 
 		http.authorizeHttpRequests()
-				.antMatchers(ROOT_PATH,DASHBOARD_PATH, TASK_PATH+NEW_TASK_PATH, HISTORY_PATH, PRODUCTIVITY_PATH)
+				.antMatchers(ROOT_PATH, DASHBOARD_PATH, TASK_PATH + "/*", HISTORY_PATH, PRODUCTIVITY_PATH)
 				.authenticated()
 				.antMatchers(LOGIN_PATH, LOGOUT_PATH)
 				.permitAll()
@@ -61,7 +62,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.loginPage(LOGIN_PATH)
 				.and()
 				.logout();
-		//http.authorizeHttpRequests().antMatchers("/*","/**").permitAll();
+		// http.authorizeHttpRequests().antMatchers("/*","/**").permitAll();
 
 	}
 }
