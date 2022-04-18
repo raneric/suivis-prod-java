@@ -5,7 +5,7 @@ import java.util.Date;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document("task_list_dev")
+@Document("task_list_test")
 public class Task implements Comparable<Task> {
 
 	@Id
