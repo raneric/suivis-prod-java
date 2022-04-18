@@ -14,5 +14,4 @@ class TimeUtilsTests {
 		assertThat(convertDoubleTimeAsFormatedString(1.5)).isEqualTo("01:30");
 		assertThat(convertDoubleTimeAsFormatedString(33.75)).isEqualTo("33:45");
 	}
-
 }

@@ -257,7 +257,6 @@ a {
 	background-color: #fefefe;
 	margin: auto;
 	padding: 10px;
-	border: 1px solid #888;
 	width: fit-content;
 	display: flex;
 	flex-direction: row;
@@ -267,7 +266,6 @@ a {
 	background-color: #fefefe;
 	margin: auto;
 	padding: 10px;
-	border: 1px solid #888;
 	width: 300px;
 	display: grid;
 	row-gap:1em;

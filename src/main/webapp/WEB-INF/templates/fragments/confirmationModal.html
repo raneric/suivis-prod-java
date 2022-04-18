@@ -12,7 +12,7 @@
 		class="modal-container">
 		<div class="modal-confirmation-content">
 			<span>Are you sure that you want to delete booth
-				[[${task.taskId}]]?</span>
+				[[${task==null? "---" : task.taskId}]]?</span>
 			<button class="btn btn-danger">Yes</button>
 			<button
 				onclick="closeConfirmationComModal()"
