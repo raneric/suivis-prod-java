@@ -62,7 +62,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.loginPage(LOGIN_PATH)
 				.and()
 				.logout();
-		// http.authorizeHttpRequests().antMatchers("/*","/**").permitAll();
-
 	}
 }

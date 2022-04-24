@@ -41,9 +41,9 @@ public class TaskController {
 	public String newTask() {
 		return TASK_VIEW;
 	}
-
+	
 	@GetMapping("/{taskId}")
-	public String openTask(@PathVariable int taskId, Model modelView) {
+	public String editTask(@PathVariable int taskId, Model modelView) {
 		Task currentTask = taskRepository.findOneByTaskId(taskId);
 		modelView.addAttribute("task", currentTask);
 		return TASK_VIEW;
