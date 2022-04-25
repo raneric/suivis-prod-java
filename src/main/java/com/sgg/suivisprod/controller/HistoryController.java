@@ -27,13 +27,13 @@ public class HistoryController {
 	PaginationService paginationService;
 
 	@GetMapping(HISTORY_PATH)
-	public String history(Model viewModel, Principal userPrinicipal, @RequestParam int currentPage) {
+	public String history(Model viewModel, Principal userPrinicipal, @RequestParam int p) {
 		return HISTORY_VIEW;
 	}
 
 	@ModelAttribute("tasks")
-	public List<Task> populateTaskList(Principal userPrinicipal, @RequestParam int currentPage) {
-		return taskService.findByUserAndPage(userPrinicipal.getName(), currentPage);
+	public List<Task> populateTaskList(Principal userPrinicipal, @RequestParam int p) {
+		return taskService.findByUserAndPage(userPrinicipal.getName(), p);
 	}
 
 	@ModelAttribute("totalPageNumber")
@@ -42,7 +42,7 @@ public class HistoryController {
 	}
 
 	@ModelAttribute("paginationList")
-	public List<Integer> populatePaginationList(Principal userPrinicipal, @RequestParam int currentPage) {
-		return paginationService.buildPaginationList(userPrinicipal.getName(), currentPage);
+	public List<Integer> populatePaginationList(Principal userPrinicipal, @RequestParam int p) {
+		return paginationService.buildPaginationList(userPrinicipal.getName(), p);
 	}
 }

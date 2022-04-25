@@ -87,29 +87,29 @@
 					class="page-item"
 					th:unless="${paginationList[0]==1}"><a
 						class="page-link"
-						th:href="@{'/history?currentPage='+${paginationList[0] - 1}}"
+						th:href="@{'/history?p='+${paginationList[0] - 1}}"
 						aria-label="Previous">
 						<span aria-hidden="true">&laquo;</span>
 					</a>
 				<li
 					th:each="pagination : ${paginationList}"
 					class="page-item"
-					th:classappend="${param.currentPage[0]==#strings.toString(pagination)} ? 'active-page' :_"
+					th:classappend="${param.p[0]==#strings.toString(pagination)} ? 'active-page' :_"
 					aria-current="page"><a
 						th:text="${pagination}"
 						class="page-link"
-						th:href="@{'/history?currentPage='+${pagination}}"></a></li>
+						th:href="@{'/history?p='+${pagination}}"></a></li>
 				<th:block
 					th:unless="${totalPageNumber==paginationList[paginationList.size - 1]}">
 					<li class="page-item"><span class="page-link">...</span></li>
 					<li class="page-item"><a
 							th:text="${totalPageNumber}"
-							th:href="@{'/history?currentPage='+${totalPageNumber}}"
+							th:href="@{'/history?p='+${totalPageNumber}}"
 							class="page-link"
 							href="#">...</a></li>
 					<li class="page-item"><a
 							class="page-link"
-							th:href="@{'/history?currentPage='+${paginationList[4]  + 1}}"
+							th:href="@{'/history?p='+${paginationList[4]  + 1}}"
 							aria-label="Next">
 							<span aria-hidden="true">&raquo;</span>
 						</a></li>
