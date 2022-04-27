@@ -1,11 +1,14 @@
 package com.sgg.suivisprod.services;
 
+import static com.sgg.suivisprod.constant.ErrorConst.PAGINATION_INDEX_ERROR_MESSAGE;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sgg.suivisprod.exception.PaginationException;
 import com.sgg.suivisprod.repository.TaskRepository;
 
 @Service
@@ -25,8 +28,6 @@ public class PaginationService {
 	 * @return list of Integer
 	 */
 	public List<Integer> buildPaginationList(String username, int currentPage) {
-
-		int totalTaskCount = taskRepository.countAllTaskByUserName(username);
 
 		int           pageRangeStartIndex = getPageRangeStartIndex(currentPage);
 		int           totalPageNumber     = getTotalPageNumber(username);
@@ -65,10 +66,10 @@ public class PaginationService {
 
 		return startRangeIndex;
 	}
-	
+
 	public int getTotalPageNumber(String username) {
 		int totalTaskCount = taskRepository.countAllTaskByUserName(username);
-		int pageNumber = (totalTaskCount / ROW_LIMIT) + 1;
+		int pageNumber     = (totalTaskCount / ROW_LIMIT) + 1;
 		return pageNumber;
 	}
 
@@ -80,4 +81,10 @@ public class PaginationService {
 		return pageRangeStartIndex > totalPageNumber - PAGINATION_LIMIT;
 	}
 
+	public void checkPaginationIndex(int page) throws PaginationException {
+		if (page <= 0) {
+			throw new PaginationException(PAGINATION_INDEX_ERROR_MESSAGE);
+		}
+	}
+	
 }

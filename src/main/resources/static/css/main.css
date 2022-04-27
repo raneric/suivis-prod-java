@@ -268,7 +268,7 @@ a {
 	padding: 10px;
 	width: 300px;
 	display: grid;
-	row-gap:1em;
+	row-gap: 1em;
 }
 
 .modal-close-btn {
@@ -326,4 +326,24 @@ a {
 
 .fab-delete:active {
 	transform: scale(0.9);
+}
+
+/*--------------------------- Error page -----------------------------------------*/
+.error-container {
+	display: flex;
+	margin: auto;
+	align-items: center;
+	flex-direction: column;
+	box-shadow: rgb(0 0 0/ 10%) 0px 4px 12px;
+	min-height: 300px;
+	padding: 20px;
+	justify-content: space-around;
+	border: 3px solid red;
+	border-radius: 10px;
+}
+
+.error-message {
+	font-size: 1.8em;
+	font-weight: 500;
+	color: #760000;
 }
