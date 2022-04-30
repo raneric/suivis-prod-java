@@ -2,15 +2,19 @@
 <html
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
-	th:replace="~{layouts/layout::app_layout(~{::title},~{::div.task-container})}">
+	th:replace="~{layouts/layout::app_layout(~{::title},~{::script},~{::div.task-container})}">
 <head>
 <title>New Task</title>
+<script
+	type="text/javascript"
+	th:src="@{/js/script.js}"></script>
 </head>
 <body>
 	<div class="task-container">
 		<th:block th:insert="~{fragments/boothStatusModal :: modal_status}"></th:block>
 		<th:block th:insert="~{fragments/taskTypeModal :: modal_task}"></th:block>
-		<th:block th:insert="~{fragments/confirmationModal :: modal_confirmation}"></th:block>
+		<th:block
+			th:insert="~{fragments/confirmationModal :: modal_confirmation}"></th:block>
 		<div class="task-form shadow p-3 mb-5 bg-body rounded">
 			<form
 				method="post"
@@ -27,7 +31,7 @@
 					</div>
 					<div class="col-sm form-check form-switch">
 						<input
-							th:checked="${task == null ? _:  task.prio }"
+							th:field="*{prio}"
 							onclick="handleTaskPriority(event)"
 							class="form-check-input"
 							type="checkbox"
@@ -52,7 +56,7 @@
 							for="boothId"
 							class="custom-input-label">Booth ID</label>
 						<input
-							th:value="${task == null ? _:  task.booth.boothId}"
+							th:field="*{booth.boothId}"
 							id="boothId"
 							type="text"
 							class="form-control"
@@ -65,7 +69,7 @@
 							for="boothUrl"
 							class="custom-input-label">Booth URL</label>
 						<input
-							th:value="${task == null ? _:  task.booth.boothUrl}"
+							th:field="*{booth.boothUrl}"
 							id="boothUrl"
 							onchange="handleUrlOnChange(event)"
 							type="text"
@@ -81,7 +85,7 @@
 							for="category"
 							class="custom-input-label">Category</label>
 						<input
-							th:value="${task == null ? _:  task.booth.category}"
+							th:field="*{booth.category}"
 							id="category"
 							type="text"
 							class="form-control"
@@ -93,7 +97,7 @@
 							for="nbBefore"
 							class="custom-input-label">Nb Before</label>
 						<input
-							th:value="${task == null ? 0:  task.booth.nbBefore}"
+							th:field="*{booth.nbBefore}"
 							id="nbBefore"
 							type="number"
 							class="form-control"
@@ -105,7 +109,7 @@
 							for="nbBefore"
 							class="custom-input-label">Nb After</label>
 						<input
-							th:value="${task == null ? 0:  task.booth.nbAfter}"
+							th:field="*{booth.nbAfter}"
 							id="nbAfter"
 							type="number"
 							class="form-control"
@@ -121,6 +125,7 @@
 						<div class="input-group mb-1">
 							<input
 								th:value="${task == null ? _:  task.taskType}"
+								th:field="*{taskType}"
 								id="taskType"
 								type="text"
 								class="form-control"
@@ -141,7 +146,7 @@
 							class="custom-input-label">Total Working Time</label>
 						<input
 							id="totalWorkingTime"
-							th:value="${{task == null ? _:  task.totalWorkingTime}}"
+							th:field="*{{totalWorkingTime}}"
 							type="text"
 							class="form-control"
 							placeholder="00:00"
@@ -154,7 +159,7 @@
 							for="note"
 							class="custom-input-label">Note</label>
 						<textarea
-							th:value="${task == null ? _:  task.note}"
+							th:field="*{note}"
 							id="note"
 							class="form-control"
 							placeholder="Put some comment..."
@@ -209,7 +214,9 @@
 				</tbody>
 			</table>
 		</div>
-		<th:block th:unless="${task == null}" th:insert="~{fragments/deleteFab :: delete-fab}"></th:block>
+		<th:block
+			th:unless="${task.taskId == 0}"
+			th:insert="~{fragments/deleteFab :: delete-fab}"></th:block>
 	</div>
 </body>
 </html>

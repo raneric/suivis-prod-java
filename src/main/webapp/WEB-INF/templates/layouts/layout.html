@@ -2,7 +2,7 @@
 <html
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
-	th:fragment="app_layout(title,content)">
+	th:fragment="app_layout(title,script,content)">
 <head>
 <meta charset="UTF-8" />
 <link
@@ -13,9 +13,7 @@
 <link
 	rel="stylesheet"
 	th:href="@{/css/main.css}" />
-<script
-	type="text/javascript"
-	th:src="@{/js/script.js}"></script>
+<script th:replace="${script}"></script>
 <title th:replace="${title}">Suivis-prod</title>
 </head>
 <body>

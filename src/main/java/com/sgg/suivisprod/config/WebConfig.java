@@ -19,7 +19,7 @@ import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
 
 import com.sgg.suivisprod.services.DateFormatterService;
-import com.sgg.suivisprod.services.DoubleToStringWorkingTimeConverter;
+import com.sgg.suivisprod.services.TotalWorkingTimeFormatterService;
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
@@ -40,15 +40,15 @@ public class WebConfig implements WebMvcConfigurer {
 
 	@Override
 	public void addFormatters(FormatterRegistry registry) {
-		registry.addConverter(totalWorkingTimeConverter());
+		registry.addFormatter(totalWorkingTimeFormatter());
 		registry.addFormatter(dateFormatter());
 	}
 
 	@Bean
-	public DoubleToStringWorkingTimeConverter totalWorkingTimeConverter() {
-		return new DoubleToStringWorkingTimeConverter();
+	public TotalWorkingTimeFormatterService totalWorkingTimeFormatter() {
+		return new TotalWorkingTimeFormatterService();
 	}
-
+	
 	@Bean
 	public DateFormatterService dateFormatter() {
 		return new DateFormatterService();

@@ -38,7 +38,7 @@ public class TimeUtils {
 	 * @param time
 	 * @return
 	 */
-	private double convertDoubleTimeAsForrmatedAsString(String time) {
+	public static double convertStringTimeAsDouble(String time) {
 		return getHourAsDouble(time) + getMinuteAsDouble(time);
 	}
 
@@ -47,7 +47,7 @@ public class TimeUtils {
 	 * @param time
 	 * @return
 	 */
-	private double getHourAsDouble(String time) {
+	private static double getHourAsDouble(String time) {
 		return Double.parseDouble(time.substring(0, time.indexOf(":")));
 	}
 
@@ -56,7 +56,7 @@ public class TimeUtils {
 	 * @param time
 	 * @return
 	 */
-	private double getMinuteAsDouble(String time) {
+	private static double getMinuteAsDouble(String time) {
 		return Double.parseDouble(time.substring(time.indexOf(":")));
 	}
 }

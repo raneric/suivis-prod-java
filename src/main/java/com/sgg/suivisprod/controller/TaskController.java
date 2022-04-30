@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sgg.suivisprod.domain.Task;
@@ -33,12 +34,14 @@ public class TaskController {
 
 	@GetMapping(NEW_TASK_PATH)
 	public String newTask(Model modelView) {
+		Task newTask = new Task();
+		modelView.addAttribute("task", newTask);
 		return TASK_VIEW;
 	}
 
 	//------------------TODO handle submit request--------------------
 	@PostMapping(NEW_TASK_PATH)
-	public String newTask() {
+	public String newTask(Task task) {
 		return TASK_VIEW;
 	}
 	
