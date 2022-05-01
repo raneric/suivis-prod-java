@@ -2,7 +2,6 @@ package com.sgg.suivisprod.controller;
 
 import static com.sgg.suivisprod.constant.PathConst.HISTORY_PATH;
 import static com.sgg.suivisprod.constant.PathConst.HISTORY_VIEW;
-import static com.sgg.suivisprod.constant.ErrorConst.PAGINATION_INDEX_ERROR_MESSAGE;
 
 import java.security.Principal;
 import java.util.List;

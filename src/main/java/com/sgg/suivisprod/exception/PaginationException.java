@@ -1,8 +1,9 @@
 package com.sgg.suivisprod.exception;
 
-import org.springframework.web.bind.annotation.ControllerAdvice;
-
 public class PaginationException extends Exception {
+	
+	private static final long serialVersionUID = -1299162414949642262L;
+
 	public PaginationException(String message) {
 		super(message);
 		// TODO Auto-generated constructor stub
