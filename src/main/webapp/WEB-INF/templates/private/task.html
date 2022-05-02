@@ -46,7 +46,7 @@
 							alt="logo"
 							width="100px"
 							height="43px"
-							th:src="@{~/icons/vexpo.png}" />
+							th:src="@{'/icons/vexpo.png'}" />
 					</div>
 				</div>
 				<br />
@@ -69,14 +69,13 @@
 							for="boothUrl"
 							class="custom-input-label">Booth URL</label>
 						<input
-							th:field="*{booth.boothUrl}"
+							th:value="${{task == null ? _: task.totalWorkingTime}}"
 							id="boothUrl"
 							onchange="handleUrlOnChange(event)"
 							type="text"
 							class="form-control"
 							placeholder="https://"
 							aria-label="https://" />
-
 					</div>
 				</div>
 				<div class="row mb-1">
@@ -136,7 +135,7 @@
 								class="btn btn-outline-secondary"
 								type="button"
 								id="task-type-button">
-								<img th:src="@{~/icons/find.png}" />
+								<img th:src="@{'/icons/find.png'}" />
 							</button>
 						</div>
 					</div>
@@ -144,13 +143,22 @@
 						<label
 							for="totalWorkingTime"
 							class="custom-input-label">Total Working Time</label>
-						<input
-							id="totalWorkingTime"
-							th:field="*{{totalWorkingTime}}"
-							type="text"
-							class="form-control"
-							placeholder="00:00"
-							aria-label="00:00" />
+						<div class="input-group mb-1">
+							<input 
+								id="totalWorkingTime" 
+								th:value="${{task == null ? _: task.totalWorkingTime}}"
+								disabled
+								type="text"
+								class="form-control"
+								placeholder="00:00"
+								aria-label="00:00" />
+							<button 
+								onclick=""
+								class="btn btn-outline-secondary"
+								type="button" 
+								id="working-time-edit">
+								<img th:src="@{'/icons/edit.png'}" />
+						</div>
 					</div>
 				</div>
 				<div class="row mb-3">
@@ -171,7 +179,7 @@
 					class="btn btn-primary">
 					Save <img
 						alt="save-btn"
-						th:src="@{~/icons/save.png}" />
+						th:src="@{'/icons/save.png'}" />
 				</button>
 				</button>
 				<button
@@ -179,7 +187,7 @@
 					class="btn btn-primary">
 					Start <img
 						alt="play-btn"
-						th:src="@{~/icons/play.png}" />
+						th:src="@{'/icons/play.png'}" />
 				</button>
 			</form>
 		</div>
