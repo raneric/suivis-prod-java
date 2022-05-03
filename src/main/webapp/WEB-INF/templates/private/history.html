@@ -50,7 +50,7 @@
 								th:src="@{/icons/link.png}" />
 						</a></th>
 					<td><a
-							th:href="@{/task/{taskId}(taskId=${task.taskId})}"
+							th:href="@{/task/{taskId}(taskId=${task.id})}"
 							th:text="${task.booth.boothId}"> </a></td>
 					<td th:text="${task.taskType}"></td>
 					<td th:text="${task.booth.nbAfter}"></td>

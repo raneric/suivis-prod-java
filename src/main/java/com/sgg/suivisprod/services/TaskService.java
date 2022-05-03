@@ -12,6 +12,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.sgg.suivisprod.domain.Task;
+import com.sgg.suivisprod.domain.User;
 import com.sgg.suivisprod.repository.TaskRepository;
 import com.sgg.suivisprod.repository.UserRepository;
 
@@ -21,10 +22,14 @@ public class TaskService {
 	@Autowired
 	private TaskRepository taskRepository;
 
+	@Autowired
+	private UserRepository userRepository;
+
 	public List<Task> findByUserAndPage(String userName, int currentPage) {
-		Pageable   page           = PageRequest
-				.of(currentPage - 1, ROW_LIMIT, Sort.by(Direction.DESC, "taskState", "finishedDate"));
-		List<Task> taskListToview = this.taskRepository.findAllByUserName(userName, page);
+		Pageable	page			= PageRequest.of(currentPage - 1, ROW_LIMIT,
+				Sort.by(Direction.DESC, "taskState", "finishedDate"));
+		List<Task>	taskListToview	= this.taskRepository
+				.findAllByUserName(userName, page);
 		return taskListToview;
 	}
 
@@ -32,5 +37,25 @@ public class TaskService {
 		int totalTask = taskRepository.countAllTaskByUserName(username);
 		return totalTask;
 	}
-	
+
+	public String saveTask(Task task, String userName) {
+		String taskId = "";
+		if (task.getId() == null) {
+			User user = userRepository.findByUsername(userName);
+			task.setUser(user);
+			taskId = insertNewTask(task);
+		} else {
+			taskId = updateTask(task);
+		}
+		return taskId;
+	}
+
+	private String insertNewTask(Task task) {
+		return taskRepository.save(task).getId();
+	}
+
+	private String updateTask(Task task) {
+		return taskRepository.save(task).getId();
+	}
+
 }

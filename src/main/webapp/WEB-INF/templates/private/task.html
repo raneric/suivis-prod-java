@@ -25,7 +25,8 @@
 						<span
 							onclick="openStatusComModal()"
 							class="badge bg-info"
-							id="status-com-badge">Essai Payant</span> <span
+							id="status-com-badge">Essai Payant</span>
+						<span
 							class="badge bg-info"
 							id="status-iv-badge">V</span>
 					</div>
@@ -36,8 +37,7 @@
 							class="form-check-input"
 							type="checkbox"
 							role="switch"
-							id="prio" />
-						<label
+							id="prio" /> <label
 							class="form-check-label"
 							for="prio">Prio</label>
 					</div>
@@ -54,8 +54,7 @@
 					<div class="col-sm">
 						<label
 							for="boothId"
-							class="custom-input-label">Booth ID</label>
-						<input
+							class="custom-input-label">Booth ID</label> <input
 							th:field="*{booth.boothId}"
 							id="boothId"
 							type="text"
@@ -67,9 +66,8 @@
 					<div class="col-sm">
 						<label
 							for="boothUrl"
-							class="custom-input-label">Booth URL</label>
-						<input
-							th:value="${{task == null ? _: task.totalWorkingTime}}"
+							class="custom-input-label">Booth URL</label> <input
+							th:field="*{booth.boothUrl}"
 							id="boothUrl"
 							onchange="handleUrlOnChange(event)"
 							type="text"
@@ -82,8 +80,7 @@
 					<div class="col-sm-6">
 						<label
 							for="category"
-							class="custom-input-label">Category</label>
-						<input
+							class="custom-input-label">Category</label> <input
 							th:field="*{booth.category}"
 							id="category"
 							type="text"
@@ -94,8 +91,7 @@
 					<div class="col-sm-3">
 						<label
 							for="nbBefore"
-							class="custom-input-label">Nb Before</label>
-						<input
+							class="custom-input-label">Nb Before</label> <input
 							th:field="*{booth.nbBefore}"
 							id="nbBefore"
 							type="number"
@@ -106,8 +102,7 @@
 					<div class="col-sm-3">
 						<label
 							for="nbBefore"
-							class="custom-input-label">Nb After</label>
-						<input
+							class="custom-input-label">Nb After</label> <input
 							th:field="*{booth.nbAfter}"
 							id="nbAfter"
 							type="number"
@@ -144,20 +139,21 @@
 							for="totalWorkingTime"
 							class="custom-input-label">Total Working Time</label>
 						<div class="input-group mb-1">
-							<input 
-								id="totalWorkingTime" 
+							<input
+								id="totalWorkingTime"
 								th:value="${{task == null ? _: task.totalWorkingTime}}"
 								disabled
 								type="text"
 								class="form-control"
 								placeholder="00:00"
 								aria-label="00:00" />
-							<button 
+							<button
 								onclick=""
 								class="btn btn-outline-secondary"
-								type="button" 
+								type="button"
 								id="working-time-edit">
 								<img th:src="@{'/icons/edit.png'}" />
+							</button>
 						</div>
 					</div>
 				</div>
@@ -177,15 +173,16 @@
 				<button
 					type="submit"
 					class="btn btn-primary">
-					Save <img
+					Save
+					<img
 						alt="save-btn"
 						th:src="@{'/icons/save.png'}" />
-				</button>
 				</button>
 				<button
 					type="button"
 					class="btn btn-primary">
-					Start <img
+					Start
+					<img
 						alt="play-btn"
 						th:src="@{'/icons/play.png'}" />
 				</button>
@@ -200,7 +197,8 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td>Start Date: [[${{task == null ? '---': task.startDate}}]]</td>
+						<td>Start Date: [[${{task == null ? '---':
+							task.startDate}}]]</td>
 					</tr>
 					<tr>
 						<td>Total Working Time : [[${{(task == null) ? '---':
@@ -217,7 +215,8 @@
 						<td>To submit before: ---</td>
 					</tr>
 					<tr>
-						<td>Task state: [[${(task == null) ? '---': task.taskState}]]</td>
+						<td>Task state: [[${(task == null) ? '---':
+							task.taskState}]]</td>
 					</tr>
 				</tbody>
 			</table>

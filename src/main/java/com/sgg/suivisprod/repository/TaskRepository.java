@@ -1,6 +1,7 @@
 package com.sgg.suivisprod.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.Aggregation;
@@ -12,6 +13,7 @@ import com.sgg.suivisprod.domain.Task;
 
 @Repository
 public interface TaskRepository extends PagingAndSortingRepository<Task, String> {
+	
 	@Query(value = "{'user':{'userId':?0}}")
 	List<Task> findAllByUserId(String userId, Pageable page);
 	
@@ -23,7 +25,10 @@ public interface TaskRepository extends PagingAndSortingRepository<Task, String>
 
 	@Query(value = "{'taskId':?0}")
 	Task findOneByTaskId(int taskId);
-
+	
+	@Query(value = "{'id':?0}")
+	Optional<Task> findById(String id);
+	
 	@Aggregation(pipeline = {"{'$match':{'user.userId':?0}}", "{'$count':'totalTask'}"})
 	Integer countAllTaskByUserId(String userId);
 	

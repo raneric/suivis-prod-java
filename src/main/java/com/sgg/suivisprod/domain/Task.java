@@ -5,6 +5,8 @@ import java.util.Date;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.sgg.suivisprod.utils.TaskState;
+
 @Document("task_list_test")
 public class Task implements Comparable<Task> {
 
@@ -17,7 +19,7 @@ public class Task implements Comparable<Task> {
 	private Date    startDate;
 	private Date    finishedDate;
 	private String  note;
-	private String  taskState;
+	private String  taskState = TaskState.TODO.toString();
 	private double  productivity;
 	private Booth   booth;
 	private User    user;
