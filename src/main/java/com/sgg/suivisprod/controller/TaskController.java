@@ -57,6 +57,12 @@ public class TaskController {
 		modelView.addAttribute("task", currentTask);
 		return TASK_VIEW;
 	}
+	
+	@GetMapping("/delete/{taskId}")
+	public String deleteTask(@PathVariable String taskId) {
+		taskService.deteteTask(taskId);
+		return "redirect:/task/new";
+	}
 
 	@ModelAttribute(CREA_TASK_TYPE)
 	public TaskType populateCreaTaskType() {

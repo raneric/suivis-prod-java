@@ -11,12 +11,17 @@
 		id="confirmation-modal"
 		class="modal-container">
 		<div class="modal-confirmation-content">
-			<span>Are you sure that you want to delete booth
-				[[${task==null? "---" : task.taskId}]]?</span>
-			<button class="btn btn-danger">Yes</button>
-			<button
-				onclick="closeConfirmationComModal()"
-				class="btn btn-success">No</button>
+			<div class="modal-confirmation-header">Warning!!</div>
+
+			<div class="modal-confirmation-message">Are you sure that you
+				want to delete booth [[${task.booth==null? "---" :
+				task.booth.boothId}]]?</div>
+			<div class="modal-confirmation-button">
+				<a class="link-button" th:href="@{/task/delete/{taskId}(taskId=${task.id}}">Yes </a>
+				<button
+					onclick="closeConfirmationComModal()"
+					class="btn btn-success">No</button>
+			</div>
 		</div>
 	</div>
 </body>

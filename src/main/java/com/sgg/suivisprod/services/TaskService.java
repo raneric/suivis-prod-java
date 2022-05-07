@@ -57,5 +57,8 @@ public class TaskService {
 	private String updateTask(Task task) {
 		return taskRepository.save(task).getId();
 	}
-
+	
+	public void deteteTask(String taskId) {
+		taskRepository.deleteById(taskId);
+	}
 }

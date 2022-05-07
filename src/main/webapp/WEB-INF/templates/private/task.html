@@ -222,7 +222,7 @@
 			</table>
 		</div>
 		<th:block
-			th:unless="${task.taskId == 0}"
+			th:unless="${task.id == null}"
 			th:insert="~{fragments/deleteFab :: delete-fab}"></th:block>
 	</div>
 </body>

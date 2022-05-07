@@ -3,7 +3,7 @@
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8"/>
+<meta charset="UTF-8" />
 </head>
 <body>
 	<div
@@ -12,13 +12,21 @@
 		<nav class="navbar">
 			<div class="container-fluid ">
 				<span class="app-par-logo">My productivity</span>
-				<form th:action="@{/logout}" method="post">
-					<button
-						class="btn-color btn btn-outline-light"
-						type="submit">
-						Logout
-					</button>
-				</form>
+				<div class="app-bar-button">
+					<img
+						class="notif-icon"
+						th:src="@{/icons/user.png}" />
+					<img
+						class="notif-icon"
+						th:src="@{/icons/bell.png}" />
+					<form
+						th:action="@{/logout}"
+						method="post">
+						<button
+							class="btn-color btn btn-outline-light"
+							type="submit">Logout</button>
+					</form>
+				</div>
 			</div>
 		</nav>
 	</div>
