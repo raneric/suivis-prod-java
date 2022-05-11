@@ -14,6 +14,9 @@
 		<th:block th:insert="~{fragments/boothStatusModal :: modal_status}"></th:block>
 		<th:block th:insert="~{fragments/taskTypeModal :: modal_task}"></th:block>
 		<th:block
+			th:unless="${notification==null}"
+			th:insert="~{fragments/notification :: notification}"></th:block>
+		<th:block
 			th:insert="~{fragments/confirmationModal :: modal_confirmation}"></th:block>
 		<div class="task-form shadow p-3 mb-5 bg-body rounded">
 			<form
@@ -37,7 +40,8 @@
 							class="form-check-input"
 							type="checkbox"
 							role="switch"
-							id="prio" /> <label
+							id="prio" />
+						<label
 							class="form-check-label"
 							for="prio">Prio</label>
 					</div>
@@ -54,7 +58,8 @@
 					<div class="col-sm">
 						<label
 							for="boothId"
-							class="custom-input-label">Booth ID</label> <input
+							class="custom-input-label">Booth ID</label>
+						<input
 							th:field="*{booth.boothId}"
 							id="boothId"
 							type="text"
@@ -66,7 +71,8 @@
 					<div class="col-sm">
 						<label
 							for="boothUrl"
-							class="custom-input-label">Booth URL</label> <input
+							class="custom-input-label">Booth URL</label>
+						<input
 							th:field="*{booth.boothUrl}"
 							id="boothUrl"
 							onchange="handleUrlOnChange(event)"
@@ -80,7 +86,8 @@
 					<div class="col-sm-6">
 						<label
 							for="category"
-							class="custom-input-label">Category</label> <input
+							class="custom-input-label">Category</label>
+						<input
 							th:field="*{booth.category}"
 							id="category"
 							type="text"
@@ -91,7 +98,8 @@
 					<div class="col-sm-3">
 						<label
 							for="nbBefore"
-							class="custom-input-label">Nb Before</label> <input
+							class="custom-input-label">Nb Before</label>
+						<input
 							th:field="*{booth.nbBefore}"
 							id="nbBefore"
 							type="number"
@@ -102,7 +110,8 @@
 					<div class="col-sm-3">
 						<label
 							for="nbBefore"
-							class="custom-input-label">Nb After</label> <input
+							class="custom-input-label">Nb After</label>
+						<input
 							th:field="*{booth.nbAfter}"
 							id="nbAfter"
 							type="number"

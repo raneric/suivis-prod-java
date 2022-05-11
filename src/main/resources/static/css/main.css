@@ -60,7 +60,7 @@ a {
 
 .link-button:visited {
 	text-decoration: none;
-	color:white;
+	color: white;
 }
 /*---------------------------------- General styles  -----------------------------------*/
 
@@ -266,7 +266,8 @@ a {
 
 /*---------------------------------- MODAL UI  -----------------------------------------*/
 .modal-container {
-	display: none;
+	visibility: hidden;
+	display: flex;
 	position: fixed; /* Stay in place */
 	z-index: 10000; /* Sit on top */
 	left: 0;
@@ -400,6 +401,51 @@ a {
 	color: #760000;
 }
 
+/*-----------------------------notification ----------------------------------------*/
+.notification {
+	position: absolute;
+	width: fit-content;
+	padding: 10px;
+	border-radius: 5px;
+	text-align: left;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+	font-family: system-ui;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 15px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	min-width: 200px;
+}
+
+.info-notif {
+	background-color: #00d0ff;
+	color: #120058;
+}
+
+.error-notif {
+	background-color: #f52c36;
+	color: #4a0000;
+}
+
+.success-notif {
+	background-color: #0bb547;
+	color: #0c3c00;
+}
+
+.warning-notif {
+	background-color: #eb8d00;
+	color: #4a2d00;
+}
+
+.notif-button {
+	background-color: transparent;
+	border: none;
+}
 /*--------------------------- Media querie -----------------------------------------*/
 @media ( min-width : 1980px) {
 	.task-container {

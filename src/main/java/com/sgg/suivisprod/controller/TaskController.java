@@ -8,6 +8,7 @@ import static com.sgg.suivisprod.constant.PathConst.TASK_PATH;
 import static com.sgg.suivisprod.constant.PathConst.TASK_VIEW;
 
 import java.security.Principal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,9 +19,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.sgg.suivisprod.domain.Notification;
 import com.sgg.suivisprod.domain.Task;
 import com.sgg.suivisprod.domain.TaskType;
 import com.sgg.suivisprod.repository.TaskRepository;
+import com.sgg.suivisprod.services.NotificationService;
 import com.sgg.suivisprod.services.TaskService;
 import com.sgg.suivisprod.services.TaskTypeService;
 
@@ -36,6 +39,9 @@ public class TaskController {
 
 	@Autowired
 	TaskService taskService;
+
+	@Autowired
+	NotificationService notificationService;
 
 	@GetMapping(NEW_TASK_PATH)
 	public String newTask(Model modelView) {
@@ -57,9 +63,9 @@ public class TaskController {
 		modelView.addAttribute("task", currentTask);
 		return TASK_VIEW;
 	}
-	
+
 	@GetMapping("/delete/{taskId}")
-	public String deleteTask(@PathVariable String taskId) {
+	public String deleteTask(@PathVariable String taskId, Model modelView) {
 		taskService.deteteTask(taskId);
 		return "redirect:/task/new";
 	}
@@ -77,5 +83,10 @@ public class TaskController {
 	@ModelAttribute(OTHERS_TASK_TYPE)
 	public TaskType populateOthersTaskType() {
 		return taskTypeService.getOthers();
+	}
+
+	@ModelAttribute("notification")
+	public Notification populateNotification() {
+		return notificationService.getNotifications();
 	}
 }

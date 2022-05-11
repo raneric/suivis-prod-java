@@ -11,10 +11,12 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
+import com.sgg.suivisprod.domain.Notification;
 import com.sgg.suivisprod.domain.Task;
 import com.sgg.suivisprod.domain.User;
 import com.sgg.suivisprod.repository.TaskRepository;
 import com.sgg.suivisprod.repository.UserRepository;
+import com.sgg.suivisprod.utils.NotificationType;
 
 @Service
 public class TaskService {
@@ -24,7 +26,10 @@ public class TaskService {
 
 	@Autowired
 	private UserRepository userRepository;
-
+	
+	@Autowired
+	private NotificationService notificationService;
+	
 	public List<Task> findByUserAndPage(String userName, int currentPage) {
 		Pageable	page			= PageRequest.of(currentPage - 1, ROW_LIMIT,
 				Sort.by(Direction.DESC, "taskState", "finishedDate"));
@@ -51,14 +56,21 @@ public class TaskService {
 	}
 
 	private String insertNewTask(Task task) {
+		Notification notif = new Notification(NotificationType.SUCCESS,
+				"Task saved");
+		notificationService.addNotification(notif);
 		return taskRepository.save(task).getId();
+		
 	}
 
 	private String updateTask(Task task) {
 		return taskRepository.save(task).getId();
 	}
-	
+
 	public void deteteTask(String taskId) {
 		taskRepository.deleteById(taskId);
+		Notification notif = new Notification(NotificationType.SUCCESS,
+				"Task deleted");
+		notificationService.addNotification(notif);
 	}
 }

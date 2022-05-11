@@ -17,7 +17,9 @@
 				want to delete booth [[${task.booth==null? "---" :
 				task.booth.boothId}]]?</div>
 			<div class="modal-confirmation-button">
-				<a class="link-button" th:href="@{/task/delete/{taskId}(taskId=${task.id}}">Yes </a>
+				<a
+					class="link-button"
+					th:href="@{/task/delete/{taskId}(taskId=${task.id})}">Yes </a>
 				<button
 					onclick="closeConfirmationComModal()"
 					class="btn btn-success">No</button>

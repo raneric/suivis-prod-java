@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="US-ASCII">
+<title>Insert title here</title>
+</head>
+<body>
+	<div
+		id="notification"
+		th:fragment="notification"
+		th:classappend="${notification == null?_:notification.notificationType}"
+		class="notification">
+		<span th:text="${notification == null?_: notification.message}"></span>
+		<button
+			onclick="closeNotification()"
+			class="notif-button">
+			<img
+				width="16px"
+				height="16px"
+				th:src="@{/icons/close-button.png}" />
+		</button>
+	</div>
+</body>
+</html>

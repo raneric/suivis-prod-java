@@ -1,22 +1,23 @@
 //----------------------------Modal function section ----------------------------------------------
-let openTaskTypeModal = openModal('task-type-modal');
-let openStatusComModal = openModal('booth-status-modal');
-let openConfirmationComModal = openModal('confirmation-modal');
+let openTaskTypeModal = setDisplayFlexToElement('task-type-modal');
+let openStatusComModal = setDisplayFlexToElement('booth-status-modal');
+let openConfirmationComModal = setDisplayFlexToElement('confirmation-modal');
 
-function openModal(elementId) {
+function setDisplayFlexToElement(elementId) {
 	return function() {
 		let taskTypeModal = document.getElementById(elementId);
-		taskTypeModal.style.display = "flex";
+		taskTypeModal.style.visibility = "visible";
 	}
 }
 
-let closeTaskTypeModal = closeModal('task-type-modal');
-let closeStatusComModal = closeModal('booth-status-modal');
-let closeConfirmationComModal = closeModal('confirmation-modal');
+let closeTaskTypeModal = setDisplayNoneToElement('task-type-modal');
+let closeStatusComModal = setDisplayNoneToElement('booth-status-modal');
+let closeConfirmationComModal = setDisplayNoneToElement('confirmation-modal');
+let closeNotification = setDisplayNoneToElement('notification');
 
-function closeModal(elementId) {
+function setDisplayNoneToElement(elementId) {
 	return function() {
-		document.getElementById(elementId).style.display = "none";
+		document.getElementById(elementId).style.visibility = "hidden";
 	}
 }
 //---------------------------------------------------------------------------------------------------

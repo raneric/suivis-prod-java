@@ -1,14 +1,14 @@
 package com.sgg.suivisprod.domain;
 
 public class Booth {
-	private int boothId;
-	private String boothUrl;
-	private int nbBefore;
-	private int nbAfter;
-	private String category;
-	private String statutCom;
-	private String statutIVP;
-	private String companyName;
+	private int		boothId;
+	private String	boothUrl;
+	private int		nbBefore;
+	private int		nbAfter;
+	private String	category;
+	private String	statutCom;
+	private String	statutIVP;
+	private String	companyName;
 
 	public int getBoothId() {
 		return boothId;
@@ -73,4 +73,18 @@ public class Booth {
 	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+
+		if (this == obj) return true;
+		if (obj == null) return false;
+
+		if (getClass() != obj.getClass()) return false;
+
+		Booth other = (Booth) obj;
+
+		return boothId == other.boothId;
+	}
+
 }
