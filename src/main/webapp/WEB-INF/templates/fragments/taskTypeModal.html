@@ -3,42 +3,41 @@
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8"/>
+<meta charset="UTF-8" />
 </head>
 <body>
 	<div
 		th:fragment="modal_task"
 		id="task-type-modal"
 		class="modal-container">
-		<div class="modal-content">
-			<div class="btn-group-modal">
-				<button
-					th:each="creaTask:${Crea.variant}"
-					onclick="clickedTaskType(event)"
-					class="btn btn-outline-primary"
-					th:text="${creaTask.taskType}"></button>
-			</div>
-			<div class="btn-group-modal" th:object="${Maj}">
-				<button
-					th:each="majTask:${Maj.variant}"
-					onclick="clickedTaskType(event)"
-					class="btn btn-outline-primary"
-					th:text="${majTask.taskType}"></button>
-			</div>
-			<div class="btn-group-modal">
-				<button
-					th:each="othersTask:${Others.variant}"
-					onclick="clickedTaskType(event)"
-					class="btn btn-outline-primary"
-					th:text="${othersTask.taskType}"></button>
+		<div
+			th:replace="~{layouts/modal_layout::modal_layout(~{::div.modal-content})}">
+			<div class="modal-content">
+				<div class="btn-group-modal">
+					<button
+						th:each="creaTask:${Crea.variant}"
+						onclick="clickedTaskType(event)"
+						class="btn btn-outline-primary"
+						th:text="${creaTask.taskType}"></button>
+				</div>
+				<div
+					class="btn-group-modal"
+					th:object="${Maj}">
+					<button
+						th:each="majTask:${Maj.variant}"
+						onclick="clickedTaskType(event)"
+						class="btn btn-outline-primary"
+						th:text="${majTask.taskType}"></button>
+				</div>
+				<div class="btn-group-modal">
+					<button
+						th:each="othersTask:${Others.variant}"
+						onclick="clickedTaskType(event)"
+						class="btn btn-outline-primary"
+						th:text="${othersTask.taskType}"></button>
+				</div>
 			</div>
 		</div>
-		<button
-			id="task-type"
-			onclick="closeTaskTypeModal()"
-			class="modal-close-btn btn btn-light">
-			Close
-		</button>
 	</div>
 </body>
 </html>

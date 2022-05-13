@@ -1,4 +1,12 @@
 //----------------------------Modal function section ----------------------------------------------
+
+function closeModal() {
+	let elements = document.getElementsByClassName("modal-container");
+	for (let index = 0; index < elements.length; index++) {
+		elements[index].style.visibility = "hidden";
+	}
+}
+
 let openTaskTypeModal = setDisplayFlexToElement('task-type-modal');
 let openStatusComModal = setDisplayFlexToElement('booth-status-modal');
 let openConfirmationComModal = setDisplayFlexToElement('confirmation-modal');

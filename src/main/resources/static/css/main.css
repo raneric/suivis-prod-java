@@ -171,6 +171,18 @@ a {
 /*---------------------------------- App bar -----------------------------------------*/
 
 /*---------------------------------- Task  -----------------------------------------*/
+#status-com-badge:hover{
+	cursor: pointer;
+}
+.custom-badge{
+	background-color: #0dcaf0;
+    color: white;
+    font-weight: 700;
+    padding: 4px 10px 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    box-shadow: rgb(0 0 0 / 15%) 1.95px 1.95px 2.6px;
+}
 .task-container {
 	display: flex;
 	justify-content: space-between;
