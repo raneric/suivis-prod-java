@@ -171,18 +171,20 @@ a {
 /*---------------------------------- App bar -----------------------------------------*/
 
 /*---------------------------------- Task  -----------------------------------------*/
-#status-com-badge:hover{
+#status-com-badge:hover {
 	cursor: pointer;
 }
-.custom-badge{
+
+.custom-badge {
 	background-color: #0dcaf0;
-    color: white;
-    font-weight: 700;
-    padding: 4px 10px 5px 10px;
-    border-radius: 5px;
-    font-size: 0.9em;
-    box-shadow: rgb(0 0 0 / 15%) 1.95px 1.95px 2.6px;
+	color: white;
+	font-weight: 700;
+	padding: 4px 10px 5px 10px;
+	border-radius: 5px;
+	font-size: 0.9em;
+	box-shadow: rgb(0 0 0/ 15%) 1.95px 1.95px 2.6px;
 }
+
 .task-container {
 	display: flex;
 	justify-content: space-between;
@@ -458,6 +460,88 @@ a {
 	background-color: transparent;
 	border: none;
 }
+/*--------------------------- Dashboard -----------------------------------------*/
+.todo-color {
+	background: rgb(0, 179, 255);
+	background: radial-gradient(circle, rgba(0, 179, 255, 1) 38%,
+		rgba(0, 147, 209, 1) 90%);
+}
+
+.in-progress-color {
+	background: rgb(247, 207, 1);
+	background: radial-gradient(circle, rgba(247, 207, 1, 1) 38%,
+		rgba(237, 175, 2, 1) 90%);
+}
+
+.done-color {
+	background: rgb(93, 228, 0);
+	background: radial-gradient(circle, rgba(93, 228, 0, 1) 41%,
+		rgba(4, 196, 0, 1) 92%);
+}
+
+.stdby-color {
+	background: rgb(238, 148, 1);
+	background: radial-gradient(circle, rgba(238, 148, 1, 1) 41%,
+		rgba(219, 124, 0, 1) 92%);
+}
+
+.blue-gradient-border {
+	border-top: 4px solid;
+	border-image: linear-gradient(.25turn, #3ac5f3, 40%, #005e97) 10;
+}
+
+.yellow-gradien-border {
+	border-top: 4px solid;
+	border-image: linear-gradient(.25turn, #fff80b, 50%, #e9ac00) 10;
+}
+
+.green-gradient-border {
+	border-top: 4px solid;
+	border-image: linear-gradient(.25turn, #52ff4b, 40%, #007609) 10;
+}
+
+.orange-gradient-border {
+	border-top: 4px solid;
+	border-image: linear-gradient(.25turn, #f7eb56, 50%, #c16302) 10;
+}
+
+.dashboard-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 100%;
+	padding: 10px;
+}
+
+.block-container {
+	min-height: 500px;
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06)
+		0px 0px 0px 1px;
+	width: 300px;
+	align-items: center;
+	height: 500px;
+	border-radius: 0px 0px 8px 8px;
+}
+
+.block-header {
+	height: 50px;
+	width: fit-content;
+	margin: auto;
+	margin-top: -25px;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: aquamarine;
+	padding: 0px 10px 0px 10px;
+	font-weight: bold;
+	border-radius: 3px;
+}
+
+.block-content {
+	height: 100%;
+}
+
 /*--------------------------- Media querie -----------------------------------------*/
 @media ( min-width : 1980px) {
 	.task-container {

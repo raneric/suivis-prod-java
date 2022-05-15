@@ -2,12 +2,49 @@
 <html
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
-	th:replace="~{layouts/layout::app_layout(~{::title},~{},~{::span})}">
+	th:replace="~{layouts/layout::app_layout(~{::title},~{},~{::div.dashboard-container})}">
 <head>
 <meta charset="UTF-8" />
 <title>Dashboard</title>
 </head>
 <body>
-	<span>DASHBOARD</span>
+	<div class="dashboard-container">
+		<div class="block-container blue-gradient-border">
+			<div class="block-content"></div>
+			<div class="block-header todo-color">
+				<img
+					class="img-icon"
+					th:src="@{/icons/tasks.png}" />
+				<span>TODO</span>
+			</div>
+		</div>
+		<div class="block-container yellow-gradien-border">
+			<div class="block-content"></div>
+			<div class="block-header in-progress-color">
+				<img
+					class="img-icon"
+					th:src="@{/icons/in_progress.png}" />
+				<span>IN PROGRESS</span>
+			</div>
+		</div>
+		<div class="block-container green-gradient-border">
+			<div class="block-content"></div>
+			<div class="block-header done-color ">
+				<img
+					class="img-icon"
+					th:src="@{/icons/done.png}" />
+				<span>DONE</span>
+			</div>
+		</div>
+		<div class="block-container orange-gradient-border">
+			<div class="block-content"></div>
+			<div class="block-header stdby-color">
+				<img
+					class="img-icon"
+					th:src="@{/icons/stdby.png}" />
+				<span>STAND-BY</span>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
