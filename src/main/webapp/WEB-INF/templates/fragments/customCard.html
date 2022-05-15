@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+	<th:block
+		th:fragment="custom_card(boothId, note, taskType, startDate)">
+		<div
+			class="custom-card"
+			draggable="true">
+			<div class="custom-card-row">
+				<span class="bold-text-card" th:text="${boothId}"></span>
+				<img
+					th:if="${note}"
+					class="img-icon"
+					th:src="@{/icons/mail.png}" />
+			</div>
+			<div class="custom-card-row">
+				<span th:text="${taskType}"></span>
+				<span th:text="${startDate}"></span>
+			</div>
+		</div>
+	</th:block>
+</body>
+</html>

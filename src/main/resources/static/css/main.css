@@ -462,27 +462,23 @@ a {
 }
 /*--------------------------- Dashboard -----------------------------------------*/
 .todo-color {
-	background: rgb(0, 179, 255);
 	background: radial-gradient(circle, rgba(0, 179, 255, 1) 38%,
 		rgba(0, 147, 209, 1) 90%);
 }
 
 .in-progress-color {
-	background: rgb(247, 207, 1);
 	background: radial-gradient(circle, rgba(247, 207, 1, 1) 38%,
 		rgba(237, 175, 2, 1) 90%);
 }
 
 .done-color {
-	background: rgb(93, 228, 0);
 	background: radial-gradient(circle, rgba(93, 228, 0, 1) 41%,
 		rgba(4, 196, 0, 1) 92%);
 }
 
 .stdby-color {
-	background: rgb(238, 148, 1);
-	background: radial-gradient(circle, rgba(238, 148, 1, 1) 41%,
-		rgba(219, 124, 0, 1) 92%);
+	background: radial-gradient(circle, rgb(243 86 26) 41%, rgb(219, 5, 3)
+		92%);
 }
 
 .blue-gradient-border {
@@ -500,9 +496,9 @@ a {
 	border-image: linear-gradient(.25turn, #52ff4b, 40%, #007609) 10;
 }
 
-.orange-gradient-border {
+.red-gradient-border {
 	border-top: 4px solid;
-	border-image: linear-gradient(.25turn, #f7eb56, 50%, #c16302) 10;
+	border-image: linear-gradient(.25turn, #fdc2bc, 60%, #d10000) 10;
 }
 
 .dashboard-container {
@@ -542,6 +538,27 @@ a {
 	height: 100%;
 }
 
+.custom-card {
+	display: flex;
+	flex-direction: column;
+	padding: 5px 10px 5px 10px;
+	box-shadow: rgb(0 0 0/ 16%) 0px 1px 4px;
+	margin-bottom: 8px;
+}
+
+.custom-card:hover {
+	cursor: pointer;
+}
+
+.bold-text-card {
+	font-weight: bold;
+}
+
+.custom-card-row {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
 /*--------------------------- Media querie -----------------------------------------*/
 @media ( min-width : 1980px) {
 	.task-container {

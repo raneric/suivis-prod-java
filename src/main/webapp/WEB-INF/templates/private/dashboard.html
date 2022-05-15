@@ -10,7 +10,12 @@
 <body>
 	<div class="dashboard-container">
 		<div class="block-container blue-gradient-border">
-			<div class="block-content"></div>
+			<div class="block-content">
+				<th:block
+					th:insert="~{fragments/customCard :: custom_card('156565',true,'AUTOVALIDCréaPrio','10-12-2022')}"></th:block>
+				<th:block
+					th:insert="~{fragments/customCard :: custom_card('55038',false,'AUTOVALIDMajPrio','01-20-2022')}"></th:block>
+			</div>
 			<div class="block-header todo-color">
 				<img
 					class="img-icon"
@@ -36,7 +41,7 @@
 				<span>DONE</span>
 			</div>
 		</div>
-		<div class="block-container orange-gradient-border">
+		<div class="block-container red-gradient-border">
 			<div class="block-content"></div>
 			<div class="block-header stdby-color">
 				<img
