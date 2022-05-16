@@ -6,20 +6,22 @@
 </head>
 <body>
 	<th:block
-		th:fragment="custom_card(boothId, note, taskType, startDate)">
+		th:fragment="custom_card">
 		<div
 			class="custom-card"
 			draggable="true">
 			<div class="custom-card-row">
-				<span class="bold-text-card" th:text="${boothId}"></span>
+				<span
+					class="bold-text-card"
+					th:text="${task.booth.boothId}"></span>
 				<img
-					th:if="${note}"
+					th:unless="${#strings.isEmpty(task.note)}"
 					class="img-icon"
 					th:src="@{/icons/mail.png}" />
 			</div>
 			<div class="custom-card-row">
-				<span th:text="${taskType}"></span>
-				<span th:text="${startDate}"></span>
+				<span th:text="${task.taskType}"></span>
+				<span th:text="${{task.startDate!=null?task.startDate:_}}"></span>
 			</div>
 		</div>
 	</th:block>
