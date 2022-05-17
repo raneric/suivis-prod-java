@@ -8,6 +8,11 @@ import java.util.Locale;
 
 import org.springframework.format.Formatter;
 
+/**
+ * This date formatter format java date object to String date in frormat
+ * dd-mm-yyy
+ *
+ */
 public class DateFormatterService implements Formatter<Date> {
 
 	@Override

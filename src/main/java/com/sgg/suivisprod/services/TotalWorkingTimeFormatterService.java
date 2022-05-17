@@ -8,6 +8,10 @@ import java.util.Locale;
 
 import org.springframework.format.Formatter;
 
+/**
+ * This formatter convert double working time from DB to HH:MM String format
+ *
+ */
 public class TotalWorkingTimeFormatterService  implements Formatter<Double>{
 
 	@Override
