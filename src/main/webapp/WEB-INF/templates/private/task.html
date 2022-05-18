@@ -11,13 +11,13 @@
 </head>
 <body>
 	<div class="task-container">
-		<th:block th:insert="~{fragments/boothStatusModal :: modal_status}"></th:block>
-		<th:block th:insert="~{fragments/taskTypeModal :: modal_task}"></th:block>
+		<th:block th:insert="~{fragments/booth_status_modal :: modal_status}"></th:block>
+		<th:block th:insert="~{fragments/task_type_modal :: modal_task}"></th:block>
 		<th:block
 			th:unless="${notification==null}"
 			th:insert="~{fragments/notification :: notification}"></th:block>
 		<th:block
-			th:insert="~{fragments/confirmationModal :: modal_confirmation}"></th:block>
+			th:insert="~{fragments/confirmation_modal :: modal_confirmation}"></th:block>
 		<div class="task-form shadow p-3 mb-5 bg-body rounded">
 			<form
 				method="post"
@@ -232,7 +232,7 @@
 		</div>
 		<th:block
 			th:unless="${task.id == null}"
-			th:insert="~{fragments/deleteFab :: delete-fab}"></th:block>
+			th:insert="~{fragments/delete_fab :: delete-fab}"></th:block>
 	</div>
 </body>
 </html>

@@ -18,10 +18,10 @@
 </head>
 <body>
 	<div class="app-bar-container">
-		<th:block th:insert="~{fragments/appBar :: app_bar}"></th:block>
+		<th:block th:insert="~{fragments/app_bar :: app_bar}"></th:block>
 	</div>
 	<div class="body-container">
-		<th:block th:insert="~{fragments/appDrawer :: drawer}"></th:block>
+		<th:block th:insert="~{fragments/app_drawer :: drawer}"></th:block>
 		<div th:replace="${content}"></div>
 	</div>
 </body>
