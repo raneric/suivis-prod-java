@@ -8,6 +8,10 @@ a:link {
 	text-decoration: none;
 }
 
+.small-font {
+	font-size: 0.9em;
+}
+
 body {
 	height: 100%;
 	margin: 0;
@@ -536,6 +540,7 @@ a {
 
 .block-content {
 	height: 100%;
+	padding: 5px;
 }
 
 .custom-card {

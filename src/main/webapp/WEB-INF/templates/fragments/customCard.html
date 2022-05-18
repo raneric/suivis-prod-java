@@ -15,11 +15,12 @@
 					class="bold-text-card"
 					th:text="${task.booth.boothId}"></span>
 				<img
+					width="16px"
+					height="16px"
 					th:unless="${#strings.isEmpty(task.note)}"
-					class="img-icon"
 					th:src="@{/icons/mail.png}" />
 			</div>
-			<div class="custom-card-row">
+			<div class="custom-card-row small-font">
 				<span th:text="${task.taskType}"></span>
 				<span th:text="${{task.startDate!=null?task.startDate:_}}"></span>
 			</div>
