@@ -2,15 +2,22 @@
 <html
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
-	th:replace="~{layouts/layout::app_layout(~{::title},~{},~{::div.dashboard-container})}">
+	th:replace="~{layouts/layout::app_layout(~{::title},~{::script},~{::div.dashboard-container})}">
 <head>
 <meta charset="UTF-8" />
 <title>Dashboard</title>
+<script
+	type="text/javascript"
+	th:src="@{/js/script.js}"></script>
 </head>
 <body>
 	<div class="dashboard-container">
 		<div class="block-container blue-gradient-border">
-			<div class="block-content">
+			<div
+				class="block-content"
+				id="todo"
+				ondragover="dropPreventDefault(event)"
+				ondrop="onDropHandler(event, this)">
 				<th:block
 					th:each="task:${allTask.todo}"
 					th:include="~{fragments/custom_card :: custom_card}"></th:block>
@@ -23,7 +30,11 @@
 			</div>
 		</div>
 		<div class="block-container yellow-gradien-border">
-			<div class="block-content">
+			<div
+				class="block-content"
+				id="in_progress"
+				ondragover="dropPreventDefault(event)"
+				ondrop="onDropHandler(event, this)">
 				<th:block
 					th:each="task:${allTask.in_progress}"
 					th:include="~{fragments/custom_card :: custom_card}"></th:block>
@@ -36,7 +47,11 @@
 			</div>
 		</div>
 		<div class="block-container green-gradient-border">
-			<div class="block-content">
+			<div
+				class="block-content"
+				id="done"
+				ondragover="dropPreventDefault(event)"
+				ondrop="onDropHandler(event, this)">
 				<th:block
 					th:each="task:${allTask.done}"
 					th:include="~{fragments/custom_card :: custom_card}"></th:block>
@@ -49,7 +64,11 @@
 			</div>
 		</div>
 		<div class="block-container red-gradient-border">
-			<div class="block-content">
+			<div
+				class="block-content"
+				id="stdby"
+				ondragover="dropPreventDefault(event)"
+				ondrop="onDropHandler(event, this)">
 				<th:block
 					th:each="task:${allTask.stdby}"
 					th:include="~{fragments/custom_card :: custom_card}"></th:block>

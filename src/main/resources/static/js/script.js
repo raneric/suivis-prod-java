@@ -89,3 +89,18 @@ function getBoothIdFromUrl(url) {
 	return boothId;
 }
 
+//-----------------------Dashboard ---------------------------------------
+function dropPreventDefault(e) {
+	e.preventDefault();
+}
+
+function onDropHandler(event, el) {
+	event.preventDefault();
+	let card = event.dataTransfer.getData("text");
+	el.appendChild(document.getElementById(card));
+}
+
+function onDrageHandler(e) {
+	e.stopPropagation();
+	e.dataTransfer.setData("text", e.target.id);
+}

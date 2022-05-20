@@ -55,8 +55,8 @@ public class TaskService {
 	 */
 	public Map<String, List<Task>> findByTaskState(String username) {
 		Map<String, List<Task>>	taskByTaskType	= new HashMap<>();
-		Pageable				pageDescOrder	= PageRequest.of(0, ROW_LIMIT, Sort.by(Direction.DESC, "startDate"));
-		Pageable				pageAscOrder	= PageRequest.of(0, ROW_LIMIT);
+		Pageable				pageDescOrder	= PageRequest.of(0, 7, Sort.by(Direction.DESC, "startDate"));
+		Pageable				pageAscOrder	= PageRequest.of(0, 7);
 
 		List<Task>	todo		= taskRepository.findByTaskState(username, TaskState.TODO.toString(), pageAscOrder);
 		List<Task>	inprogress	= taskRepository.findByTaskState(username, TaskState.IN_PROGRESS.toString(),

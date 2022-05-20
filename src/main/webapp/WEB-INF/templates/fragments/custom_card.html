@@ -5,11 +5,12 @@
 <head>
 </head>
 <body>
-	<th:block
-		th:fragment="custom_card">
+	<th:block th:fragment="custom_card">
 		<div
+			th:id="${task.id}"
 			class="custom-card"
-			draggable="true">
+			draggable="true"
+			ondragstart="onDrageHandler(event)">
 			<div class="custom-card-row">
 				<span
 					class="bold-text-card"
