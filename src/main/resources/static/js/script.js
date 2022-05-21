@@ -1,5 +1,4 @@
 //----------------------------Modal function section ----------------------------------------------
-
 function closeModal() {
 	let elements = document.getElementsByClassName("modal-container");
 	for (let index = 0; index < elements.length; index++) {
@@ -94,13 +93,27 @@ function dropPreventDefault(e) {
 	e.preventDefault();
 }
 
-function onDropHandler(event, el) {
+async function onDropHandler(event, el) {
 	event.preventDefault();
 	let card = event.dataTransfer.getData("text");
 	el.appendChild(document.getElementById(card));
+	let test = await sendRequest('http://localhost:8080/task/ajax/update');
+	console.log(test);
 }
 
 function onDrageHandler(e) {
 	e.stopPropagation();
 	e.dataTransfer.setData("text", e.target.id);
+}
+
+async function sendRequest(url) {
+	return fetch(url)
+		.then(returnJsonData)
+		.catch(error => {
+			return error;
+		})
+}
+
+let returnJsonData = data => {
+	return data.json();
 }

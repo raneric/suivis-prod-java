@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sgg.suivisprod.domain.Notification;
 import com.sgg.suivisprod.domain.Task;
@@ -50,7 +51,6 @@ public class TaskController {
 		return TASK_VIEW;
 	}
 
-	// ------------------TODO handle submit request--------------------
 	@PostMapping(NEW_TASK_PATH)
 	public String newTask(Task task, Principal userPrinicipal) {
 		String taskId = taskService.saveTask(task, userPrinicipal.getName());
@@ -69,7 +69,12 @@ public class TaskController {
 		taskService.deteteTask(taskId);
 		return "redirect:/task/new";
 	}
-
+	
+	@GetMapping("/asyncupdate/{taskId}")
+	public @ResponseBody String ajaxRequestHandler(@PathVariable String taskId){
+		return "{\"data\":\"data sent\"}";
+	}
+	
 	@ModelAttribute(CREA_TASK_TYPE)
 	public TaskType populateCreaTaskType() {
 		return taskTypeService.getCrea();
