@@ -96,8 +96,8 @@ public class TaskController {
 		return taskTypeService.getOthers();
 	}
 
-	@ModelAttribute("notification")
-	public Notification populateNotification() {
+	@ModelAttribute("notifications")
+	public List<Notification> populateNotification() {
 		return notificationService.getNotifications();
 	}
 }

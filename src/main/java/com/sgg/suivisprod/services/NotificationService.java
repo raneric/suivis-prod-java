@@ -6,14 +6,18 @@ import com.sgg.suivisprod.utils.NotificationType;
 @Service
 public class NotificationService {
 
-	private Notification notifications;
+	private List<Notification> notifications;
 
-	public Notification getNotifications() {
+	public NotificationService() {
+		this.notifications = new LinkedList<>();
+	}
+
+	public List<Notification> getNotifications() {
 		return notifications;
 	}
 
 	private void addNotification(Notification notification) {
-		this.notifications = notification;
+		this.notifications.add(notification);
 	}
 	
 	public void notify(NotificationType notifType, String message) {
