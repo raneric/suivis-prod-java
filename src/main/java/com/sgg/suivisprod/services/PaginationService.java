@@ -29,20 +29,20 @@ public class PaginationService {
 	 */
 	public List<Integer> buildPaginationList(String username, int currentPage) {
 
-		int				pageRangeStartIndex	= getPageRangeStartIndex(currentPage);
+		int				pageIndex	= getPageRangeStartIndex(currentPage);
 		int				totalPageNumber		= getTotalPageNumber(username);
 		List<Integer>	paginationList			= new ArrayList<>();
 		
-		if (haveMoreTahnOnePage(totalPageNumber) && isTheLastXPage(pageRangeStartIndex, totalPageNumber)) {
-			pageRangeStartIndex = totalPageNumber - PAGINATION_LIMIT + 1;
+		if (haveMoreTahnOnePage(totalPageNumber) && isTheLastXPage(pageIndex, totalPageNumber)) {
+			pageIndex = totalPageNumber - PAGINATION_LIMIT + 1;
 		}
 
 		for (int i = 1; i <= PAGINATION_LIMIT; i++) {
-			paginationList.add(pageRangeStartIndex);
-			if (pageRangeStartIndex == totalPageNumber) {
+			paginationList.add(pageIndex);
+			if (pageIndex == totalPageNumber) {
 				break;
 			}
-			pageRangeStartIndex++;
+			pageIndex++;
 		}
 		return paginationList;
 	}

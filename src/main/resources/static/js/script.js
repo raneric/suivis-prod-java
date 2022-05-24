@@ -97,7 +97,8 @@ async function onDropHandler(event, el) {
 	event.preventDefault();
 	let card = event.dataTransfer.getData("text");
 	el.appendChild(document.getElementById(card));
-	let test = await sendRequest('http://localhost:8080/task/ajax/update');
+	console.log(el.id);
+	let test = await sendRequest(`http://localhost:8080/task/asyncupdate/${card}?state=${el.id}`);
 	console.log(test);
 }
 

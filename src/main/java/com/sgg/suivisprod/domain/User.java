@@ -1,12 +1,7 @@
 package com.sgg.suivisprod.domain;
-
-import java.util.Collection;
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 @Document("user")
 public class User {

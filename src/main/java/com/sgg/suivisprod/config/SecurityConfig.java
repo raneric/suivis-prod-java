@@ -5,7 +5,6 @@ import static com.sgg.suivisprod.constant.PathConst.HISTORY_PATH;
 import static com.sgg.suivisprod.constant.PathConst.TASK_PATH;
 import static com.sgg.suivisprod.constant.PathConst.LOGIN_PATH;
 import static com.sgg.suivisprod.constant.PathConst.LOGOUT_PATH;
-import static com.sgg.suivisprod.constant.PathConst.NEW_TASK_PATH;
 import static com.sgg.suivisprod.constant.PathConst.PRODUCTIVITY_PATH;
 import static com.sgg.suivisprod.constant.PathConst.ROOT_PATH;
 
@@ -20,9 +19,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
 import com.sgg.suivisprod.services.CustomUserDetailsService;
-import com.sgg.suivisprod.utils.Roles;
 
 @Configuration
 @EnableWebSecurity

@@ -1,11 +1,5 @@
 package com.sgg.suivisprod.services;
-
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-
 import org.springframework.stereotype.Service;
-
 import com.sgg.suivisprod.domain.Notification;
 import com.sgg.suivisprod.utils.NotificationType;
 
@@ -18,7 +12,12 @@ public class NotificationService {
 		return notifications;
 	}
 
-	public void addNotification(Notification notification) {
+	private void addNotification(Notification notification) {
 		this.notifications = notification;
+	}
+	
+	public void notify(NotificationType notifType, String message) {
+		Notification notif = new Notification(notifType, message);
+		this.addNotification(notif);
 	}
 }

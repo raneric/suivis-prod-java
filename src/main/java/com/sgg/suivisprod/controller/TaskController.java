@@ -8,7 +8,7 @@ import static com.sgg.suivisprod.constant.PathConst.TASK_PATH;
 import static com.sgg.suivisprod.constant.PathConst.TASK_VIEW;
 
 import java.security.Principal;
-import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sgg.suivisprod.domain.Notification;
@@ -53,7 +54,7 @@ public class TaskController {
 
 	@PostMapping(NEW_TASK_PATH)
 	public String newTask(Task task, Principal userPrinicipal) {
-		String taskId = taskService.saveTask(task, userPrinicipal.getName());
+		String taskId = taskService.saveNewTask(task, userPrinicipal.getName());
 		return "redirect:/task/" + taskId;
 	}
 
@@ -69,12 +70,16 @@ public class TaskController {
 		taskService.deteteTask(taskId);
 		return "redirect:/task/new";
 	}
-	
+
 	@GetMapping("/asyncupdate/{taskId}")
-	public @ResponseBody String ajaxRequestHandler(@PathVariable String taskId){
+	public @ResponseBody String ajaxRequestHandler(@PathVariable String taskId,
+			@RequestParam(name = "state") String taskState) {
+		Optional<Task> task = taskRepository.findById(taskId);
+		task.get().setTaskState(taskState);
+		taskService.updateTask(task.get());
 		return "{\"data\":\"data sent\"}";
 	}
-	
+
 	@ModelAttribute(CREA_TASK_TYPE)
 	public TaskType populateCreaTaskType() {
 		return taskTypeService.getCrea();

@@ -43,9 +43,9 @@ public class HistoryController {
 	}
 
 	@ModelAttribute("paginationList")
-	public List<Integer> populatePaginationList(Principal userPrinicipal, @RequestParam int p)
+	public List<Integer> populatePaginationList(Principal userPrinicipal, @RequestParam(name="p") int currentPage)
 			throws PaginationException {
-		paginationService.checkPaginationIndex(p);
-		return paginationService.buildPaginationList(userPrinicipal.getName(), p);
+		paginationService.checkPaginationIndex(currentPage);
+		return paginationService.buildPaginationList(userPrinicipal.getName(), currentPage);
 	}
 }

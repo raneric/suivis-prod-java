@@ -6,6 +6,5 @@ public class PaginationException extends Exception {
 
 	public PaginationException(String message) {
 		super(message);
-		// TODO Auto-generated constructor stub
 	}
 }

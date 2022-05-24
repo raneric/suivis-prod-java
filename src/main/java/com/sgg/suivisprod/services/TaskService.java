@@ -12,8 +12,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
-
-import com.sgg.suivisprod.domain.Notification;
 import com.sgg.suivisprod.domain.Task;
 import com.sgg.suivisprod.domain.User;
 import com.sgg.suivisprod.repository.TaskRepository;
@@ -89,29 +87,12 @@ public class TaskService {
 	 * @param userName
 	 * @return
 	 */
-	public String saveTask(Task task, String userName) {
-		String taskId = "";
-		if (task.getId() == null) {
-			User user = userRepository.findByUsername(userName);
-			task.setUser(user);
-			taskId = insertNewTask(task);
-		} else {
-			taskId = updateTask(task);
-		}
+	public String saveNewTask(Task task, String userName) {
+		User user = userRepository.findByUsername(userName);
+		task.setUser(user);
+		String taskId = taskRepository.save(task).getId();
+		notificationService.notify(NotificationType.SUCCESS, "New task saved");
 		return taskId;
-	}
-
-	/**
-	 * save new task
-	 * 
-	 * @param task
-	 * @return
-	 */
-	private String insertNewTask(Task task) {
-		Notification notif = new Notification(NotificationType.SUCCESS, "Task saved");
-		notificationService.addNotification(notif);
-		return taskRepository.save(task).getId();
-
 	}
 
 	/**
@@ -120,8 +101,10 @@ public class TaskService {
 	 * @param task
 	 * @return
 	 */
-	private String updateTask(Task task) {
-		return taskRepository.save(task).getId();
+	public String updateTask(Task task) {
+		String taskId = taskRepository.save(task).getId();
+		notificationService.notify(NotificationType.SUCCESS, "New task updated");
+		return taskId;
 	}
 
 	/**
@@ -130,7 +113,6 @@ public class TaskService {
 	 */
 	public void deteteTask(String taskId) {
 		taskRepository.deleteById(taskId);
-		Notification notif = new Notification(NotificationType.SUCCESS, "Task deleted");
-		notificationService.addNotification(notif);
+		notificationService.notify(NotificationType.SUCCESS, "Task deleted");
 	}
 }
