@@ -5,6 +5,7 @@ import com.sgg.suivisprod.utils.NotificationType;
 public class Notification {
 	private String				message;
 	private NotificationType	notificationType;
+	private boolean				read;
 
 	public Notification() {
 	}
@@ -29,4 +30,13 @@ public class Notification {
 	public void setNotificationType(NotificationType notificationType) {
 		this.notificationType = notificationType;
 	}
+
+	public boolean isRead() {
+		return read;
+	}
+
+	public void setRead(boolean read) {
+		this.read = read;
+	}
+
 }
