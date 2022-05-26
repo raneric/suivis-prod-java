@@ -1,12 +1,32 @@
 package com.sgg.suivisprod.domain;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 public class Booth {
+	
+	@Min(value = 1)
 	private int		boothId;
+	
+	@Pattern(regexp = "^(https:\\/\\/|http:\\/\\/|www.)")
 	private String	boothUrl;
+	
+	@Min(value = 0)
+	@Max(value = 1000)
 	private int		nbBefore;
+	
+	@Min(value = 0)
+	@Max(value = 1000)
 	private int		nbAfter;
+	
 	private String	category;
+	
+	@Size(min = 3, max = 10)
 	private String	statutCom;
+	
+	@Size(min = 1, max = 1)
 	private String	statutIVP;
 	private String	companyName;
 

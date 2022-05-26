@@ -71,6 +71,7 @@ public class TaskController {
 		return "redirect:/task/new";
 	}
 
+	//-------------------TODO handle data to view -----------------------------
 	@GetMapping("/asyncupdate/{taskId}")
 	public @ResponseBody String ajaxRequestHandler(@PathVariable String taskId,
 			@RequestParam(name = "state") String taskState) {

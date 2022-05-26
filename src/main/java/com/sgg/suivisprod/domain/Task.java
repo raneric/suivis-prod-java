@@ -2,6 +2,10 @@ package com.sgg.suivisprod.domain;
 
 import java.util.Date;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -13,8 +17,13 @@ public class Task implements Comparable<Task> {
 	@Id
 	private String  id;
 	private int     taskId;
+	
+	@Pattern(regexp = "[a-zA-Z]")
+	@Size(min = 5, max = 50)
 	private String  taskType;
 	private boolean prio;
+	
+	@Min(value = 0)
 	private double  totalWorkingTime;
 	private Date    startDate;
 	private Date    finishedDate;

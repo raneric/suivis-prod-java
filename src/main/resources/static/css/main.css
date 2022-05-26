@@ -565,6 +565,18 @@ a {
 	flex-direction: row;
 	justify-content: space-between;
 }
+
+/*-----------------------------tollstips---------------------------------------------*/
+.tooltips {
+	padding: 3px 5px 3px 5px;
+	border-radius: 3px;
+	font-size: 0.8em;
+}
+
+.tooltips-error {
+	background-color: #f98b8b;
+	color: #870404;
+}
 /*--------------------------- Media querie -----------------------------------------*/
 @media ( min-width : 1980px) {
 	.task-container {

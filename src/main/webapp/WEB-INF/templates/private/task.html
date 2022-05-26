@@ -11,7 +11,8 @@
 </head>
 <body>
 	<div class="task-container">
-		<th:block th:insert="~{fragments/booth_status_modal :: modal_status}"></th:block>
+		<th:block
+			th:insert="~{fragments/booth_status_modal :: modal_status}"></th:block>
 		<th:block th:insert="~{fragments/task_type_modal :: modal_task}"></th:block>
 		<th:block
 			th:unless="${notification==null}"
@@ -25,13 +26,23 @@
 				th:object="${task}">
 				<div class="row">
 					<div class="col-sm-5">
-						<span
+						<label
 							onclick="openStatusComModal()"
 							class="custom-badge"
-							id="status-com-badge">Essai Payant</span>
-						<span
+							for="statutCom"
+							id="status-com-badge">Essai Payant</label>
+						<input
+							th:field="*{booth.statutCom}"
+							type="hidden"
+							id="statutCom" />
+						<label
+							for="statutIVP"
 							class="custom-badge"
-							id="status-iv-badge">V</span>
+							id="status-iv-badge">V</label>
+						<input
+							th:field="*{booth.statutIVP}"
+							type="hidden"
+							id="statutIVP" />
 					</div>
 					<div class="col-sm form-check form-switch">
 						<input

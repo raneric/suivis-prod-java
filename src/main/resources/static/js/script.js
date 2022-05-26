@@ -62,24 +62,33 @@ function removePrioSufixToTaskType() {
 
 function handleStatusCom(event) {
 	let badgeElement;
+	let hiddenInput;
 	switch (event.target.name) {
 		case "statu-com":
 			badgeElement = document.getElementById("status-com-badge");
+			hiddenInput = document.getElementById("statutCom");
 			break;
 		case "statu-iv":
 			badgeElement = document.getElementById("status-iv-badge");
+			hiddenInput = document.getElementById("statutIVP");
 			break;
 	}
 	badgeElement.innerHTML = event.target.value;
+	hiddenInput.value = event.target.value;
 }
 
 function handleUrlOnChange(event) {
-	if (event.target.value !== "") {
-		let boothId = getBoothIdFromUrl(event.target.value);
-		document.getElementById("boothId").value = boothId;
+	let url = event.target.value;
+	if (url !== "" && isAvalidUrl(url)) {
+		document.getElementById("boothId").value = getBoothIdFromUrl(url);
 	} else {
 		document.getElementById("boothId").value = "";
 	}
+}
+
+function isAvalidUrl(url) {
+	const urlRegex = /^(https:\/\/|http:\/\/|www.)/;
+	return urlRegex.test(url);
 }
 
 function getBoothIdFromUrl(url) {
@@ -93,13 +102,11 @@ function dropPreventDefault(e) {
 	e.preventDefault();
 }
 
-async function onDropHandler(event, el) {
+function onDropHandler(event, dropElement) {
 	event.preventDefault();
-	let card = event.dataTransfer.getData("text");
-	el.appendChild(document.getElementById(card));
-	console.log(el.id);
-	let test = await sendRequest(`http://localhost:8080/task/asyncupdate/${card}?state=${el.id}`);
-	console.log(test);
+	let cardId = event.dataTransfer.getData("text");
+	dropElement.appendChild(document.getElementById(cardId));
+	sendRequest(`http://localhost:8080/task/asyncupdate/${cardId}?state=${dropElement.id}`);
 }
 
 function onDrageHandler(e) {
