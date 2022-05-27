@@ -9,19 +9,23 @@
 	<nav
 		th:fragment="app_bar"
 		class="nav-bar">
-			<span class="app-par-logo">My productivity</span>
-			<div class="app-bar-button">
-				<img
-					class="notif-icon"
-					th:src="@{/icons/user.png}" />
-				<form
-					th:action="@{/logout}"
-					method="post">
-					<button
-						class="btn-color btn btn-outline-light"
-						type="submit">Logout</button>
-				</form>
-			</div>
+		<span class="app-par-logo">My productivity</span>
+		<div class="app-bar-button">
+			<img
+				class="notif-icon"
+				th:src="@{/icons/user.png}" />
+			<form
+				th:action="@{/logout}"
+				method="post">
+				<button
+					class="btn-color btn btn-outline-light"
+					type="submit">
+					Logout
+					<img
+						th:src="@{/icons/logout.png}" />
+				</button>
+			</form>
+		</div>
 	</nav>
 </body>
 </html>

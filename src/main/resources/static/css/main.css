@@ -159,6 +159,7 @@ a {
 	grid-row-end: 1;
 	align-items: center;
 	padding-left: 10px;
+	padding: 5px 10px 5px 10px;
 }
 
 .app-bar-container {
