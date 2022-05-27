@@ -29,10 +29,10 @@ public class PaginationService {
 	 */
 	public List<Integer> buildPaginationList(String username, int currentPage) {
 
-		int				pageIndex	= getPageRangeStartIndex(currentPage);
-		int				totalPageNumber		= getTotalPageNumber(username);
-		List<Integer>	paginationList			= new ArrayList<>();
-		
+		int				pageIndex		= getPageRangeStartIndex(currentPage);
+		int				totalPageNumber	= getTotalPageNumber(username);
+		List<Integer>	paginationList	= new ArrayList<>();
+
 		if (haveMoreTahnOnePage(totalPageNumber) && isTheLastXPage(pageIndex, totalPageNumber)) {
 			pageIndex = totalPageNumber - PAGINATION_LIMIT + 1;
 		}
@@ -53,17 +53,15 @@ public class PaginationService {
 	 * @return
 	 */
 	private int getPageRangeStartIndex(int currentPage) {
-		String	stringTotalPageNumber	= Integer.toString(currentPage);
-		int		value					= Integer
-				.parseInt(stringTotalPageNumber.substring(stringTotalPageNumber.length() - 1));
-		int		startRangeIndex			= 0;
+		int	startRangeIndex	= 0;
+		int	lastDigit		= currentPage % 10;
 
-		if (value <= 5) {
-			startRangeIndex = (stringTotalPageNumber.length() < 2) ? 1 : currentPage - value + 1;
-		} else if (value > 5) {
-			startRangeIndex = currentPage - value + PAGINATION_LIMIT + 1;
+		if (lastDigit <= 5) {
+			startRangeIndex = currentPage - lastDigit + 1;
+		} else if (lastDigit > 5) {
+			lastDigit -= 5;
+			startRangeIndex = currentPage - lastDigit + 1;
 		}
-
 		return startRangeIndex;
 	}
 
