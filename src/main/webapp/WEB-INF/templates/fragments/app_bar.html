@@ -5,26 +5,23 @@
 <head>
 </head>
 <body>
-	<div
+
+	<nav
 		th:fragment="app_bar"
-		class="app-bar">
-		<nav class="navbar">
-			<div class="container-fluid ">
-				<span class="app-par-logo">My productivity</span>
-				<div class="app-bar-button">
-					<img
-						class="notif-icon"
-						th:src="@{/icons/user.png}" />
-					<form
-						th:action="@{/logout}"
-						method="post">
-						<button
-							class="btn-color btn btn-outline-light"
-							type="submit">Logout</button>
-					</form>
-				</div>
+		class="nav-bar">
+			<span class="app-par-logo">My productivity</span>
+			<div class="app-bar-button">
+				<img
+					class="notif-icon"
+					th:src="@{/icons/user.png}" />
+				<form
+					th:action="@{/logout}"
+					method="post">
+					<button
+						class="btn-color btn btn-outline-light"
+						type="submit">Logout</button>
+				</form>
 			</div>
-		</nav>
-	</div>
+	</nav>
 </body>
 </html>
