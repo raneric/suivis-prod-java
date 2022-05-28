@@ -67,7 +67,8 @@ public class PaginationService {
 
 	public int getTotalPageNumber(String username) {
 		int	totalTaskCount	= taskRepository.countAllTaskByUserName(username);
-		int	pageNumber		= (totalTaskCount / ROW_LIMIT) + 1;
+		int	pageNumber		= (totalTaskCount % ROW_LIMIT != 0) ? (totalTaskCount / ROW_LIMIT) + 1
+				: totalTaskCount / ROW_LIMIT;
 		return pageNumber;
 	}
 
