@@ -52,7 +52,7 @@ public class TaskService {
 	 * @return
 	 */
 	public Map<String, List<Task>> findByTaskState(String username) {
-		Map<String, List<Task>>	taskByTaskType	= new HashMap<>();
+		Map<String, List<Task>>	taskBytaskState	= new HashMap<>();
 		Pageable				pageDescOrder	= PageRequest.of(0, 7, Sort.by(Direction.DESC, "startDate"));
 		Pageable				pageAscOrder	= PageRequest.of(0, 7);
 
@@ -62,12 +62,12 @@ public class TaskService {
 		List<Task>	done		= taskRepository.findByTaskState(username, TaskState.DONE.toString(), pageDescOrder);
 		List<Task>	stdby		= taskRepository.findByTaskState(username, TaskState.STAND_BY.toString(), pageAscOrder);
 
-		taskByTaskType.put(TaskState.TODO.toString(), todo);
-		taskByTaskType.put(TaskState.IN_PROGRESS.toString(), inprogress);
-		taskByTaskType.put(TaskState.DONE.toString(), done);
-		taskByTaskType.put(TaskState.STAND_BY.toString(), stdby);
+		taskBytaskState.put(TaskState.TODO.toString(), todo);
+		taskBytaskState.put(TaskState.IN_PROGRESS.toString(), inprogress);
+		taskBytaskState.put(TaskState.DONE.toString(), done);
+		taskBytaskState.put(TaskState.STAND_BY.toString(), stdby);
 
-		return taskByTaskType;
+		return taskBytaskState;
 	}
 
 	/**

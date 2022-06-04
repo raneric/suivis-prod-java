@@ -187,6 +187,9 @@ a {
 .btn-color {
 	color: wheat;
 	border-color: wheat;
+	background-color: transparent;
+	border: none;
+	border-left: 1px solid wheat;
 }
 
 .app-par-logo {

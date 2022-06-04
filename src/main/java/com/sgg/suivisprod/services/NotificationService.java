@@ -25,7 +25,7 @@ public class NotificationService {
 	}
 	
 	public void notify(NotificationType notifType, String message) {
-		Notification notif = new Notification(notifType, message);
-		this.addNotification(notif);
+		//Notification notif = new Notification(notifType, message);
+		//this.addNotification(notif);
 	}
 }
