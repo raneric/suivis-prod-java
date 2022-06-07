@@ -20,12 +20,16 @@ function setDisplayFlexToElement(elementId) {
 let closeTaskTypeModal = setDisplayNoneToElement('task-type-modal');
 let closeStatusComModal = setDisplayNoneToElement('booth-status-modal');
 let closeConfirmationComModal = setDisplayNoneToElement('confirmation-modal');
-let closeNotification = setDisplayNoneToElement('notification');
 
 function setDisplayNoneToElement(elementId) {
 	return function() {
 		document.getElementById(elementId).style.visibility = "hidden";
 	}
+}
+
+function closeAndSetIseReadNotif(elementId){
+	document.getElementById(elementId).style.visibility = "hidden";
+	sendRequest(`http://localhost:8080/notification/read/${elementId}`);
 }
 //---------------------------------------------------------------------------------------------------
 

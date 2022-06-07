@@ -91,7 +91,7 @@ public class TaskService {
 		User user = userRepository.findByUsername(userName);
 		task.setUser(user);
 		String taskId = taskRepository.save(task).getId();
-		notificationService.notify(NotificationType.SUCCESS, "New task saved");
+		notificationService.notify(NotificationType.SUCCESS, "New task saved", user);
 		return taskId;
 	}
 
@@ -103,7 +103,7 @@ public class TaskService {
 	 */
 	public String updateTask(Task task) {
 		String taskId = taskRepository.save(task).getId();
-		notificationService.notify(NotificationType.SUCCESS, "New task updated");
+		notificationService.notify(NotificationType.SUCCESS, "New task updated", task.getUser());
 		return taskId;
 	}
 
@@ -112,7 +112,8 @@ public class TaskService {
 	 * @param taskId
 	 */
 	public void deteteTask(String taskId) {
+		User user = taskRepository.findById(taskId).get().getUser();
 		taskRepository.deleteById(taskId);
-		notificationService.notify(NotificationType.SUCCESS, "Task deleted");
+		notificationService.notify(NotificationType.SUCCESS, "Task deleted", user);
 	}
 }

@@ -10,6 +10,7 @@ import static com.sgg.suivisprod.constant.PathConst.TASK_VIEW;
 import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -72,7 +73,7 @@ public class TaskController {
 		return "redirect:/task/new";
 	}
 
-	//-------------------TODO handle data to view -----------------------------
+	// -------------------TODO handle data to view -----------------------------
 	@GetMapping("/asyncupdate/{taskId}")
 	public @ResponseBody String ajaxRequestHandler(@PathVariable String taskId,
 			@RequestParam(name = "state") String taskState) {
@@ -98,7 +99,8 @@ public class TaskController {
 	}
 
 	@ModelAttribute("notifications")
-	public List<Notification> populateNotification() {
-		return notificationService.getNotifications();
+	public List<Notification> populateNotification(Principal userPrinicipal) {
+		return notificationService.getAllNotifications(userPrinicipal.getName()).stream()
+				.filter(notif -> !notif.isRead()).collect(Collectors.toList());
 	}
 }

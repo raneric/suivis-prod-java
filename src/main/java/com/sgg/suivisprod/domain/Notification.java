@@ -21,8 +21,7 @@ public class Notification {
 	public Notification() {
 	}
 
-	public Notification(String message, NotificationType notificationType, User user) {
-		super();
+	public Notification(NotificationType notificationType, String message, User user) {
 		this.message = message;
 		this.notificationType = notificationType;
 		this.user = user;

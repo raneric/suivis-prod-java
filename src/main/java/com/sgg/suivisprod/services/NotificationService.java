@@ -1,31 +1,42 @@
 package com.sgg.suivisprod.services;
-import java.util.LinkedList;
-import java.util.List;
 
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sgg.suivisprod.domain.Notification;
+import com.sgg.suivisprod.domain.User;
+import com.sgg.suivisprod.repository.NotificationRepository;
 import com.sgg.suivisprod.utils.NotificationType;
 
 @Service
 public class NotificationService {
 
-	private List<Notification> notifications;
+	@Autowired
+	NotificationRepository notificationRepository;
 
-	public NotificationService() {
-		this.notifications = new LinkedList<>();
-	}
-
-	public List<Notification> getNotifications() {
-		return notifications;
-	}
-
-	private void addNotification(Notification notification) {
-		this.notifications.add(notification);
+	public List<Notification> getAllNotifications(String username) {
+		return notificationRepository.findByuserName(username);
 	}
 	
-	public void notify(NotificationType notifType, String message) {
-		//Notification notif = new Notification(notifType, message);
-		//this.addNotification(notif);
+	public void setAsRead(String id) {
+		Optional<Notification> notif = notificationRepository.findById(id);
+		if(!notif.isEmpty()) {
+			Notification readNotif = notif.get();
+			readNotif.setRead(true);
+			notificationRepository.save(readNotif);
+		}
+			
+	}
+	
+	public void notify(NotificationType notifType, String message, User user) {
+		Notification notif = new Notification(notifType, message,user);
+		this.addNotification(notif);
+	}
+	
+	private void addNotification(Notification notification) {
+		notificationRepository.save(notification);
 	}
 }

@@ -15,7 +15,7 @@
 			th:insert="~{fragments/booth_status_modal :: modal_status}"></th:block>
 		<th:block th:insert="~{fragments/task_type_modal :: modal_task}"></th:block>
 		<th:block
-			th:unless="${#lists.isEmpty(notifications)}"
+			th:each="notification:${notifications}"
 			th:insert="~{fragments/notification :: notification}"></th:block>
 		<th:block
 			th:insert="~{fragments/confirmation_modal :: modal_confirmation}"></th:block>
