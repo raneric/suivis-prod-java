@@ -18,7 +18,6 @@ public class Task implements Comparable<Task> {
 	private String  id;
 	private int     taskId;
 	
-	@Pattern(regexp = "[a-zA-Z]")
 	@Size(min = 5, max = 50)
 	private String  taskType;
 	private boolean prio;
