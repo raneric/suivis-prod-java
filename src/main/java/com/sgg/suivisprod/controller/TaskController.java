@@ -75,11 +75,9 @@ public class TaskController {
 
 	// -------------------TODO handle data to view -----------------------------
 	@GetMapping("/asyncupdate/{taskId}")
-	public @ResponseBody String ajaxRequestHandler(@PathVariable String taskId,
+	public @ResponseBody String updateTaskState(@PathVariable String taskId,
 			@RequestParam(name = "state") String taskState) {
-		Optional<Task> task = taskRepository.findById(taskId);
-		task.get().setTaskState(taskState);
-		taskService.updateTask(task.get());
+		taskService.updateTaskState(taskId, taskState);
 		return "{\"data\":\"data sent\"}";
 	}
 

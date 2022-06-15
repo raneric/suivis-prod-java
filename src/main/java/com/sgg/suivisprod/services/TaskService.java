@@ -2,9 +2,11 @@ package com.sgg.suivisprod.services;
 
 import static com.sgg.suivisprod.services.PaginationService.ROW_LIMIT;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -12,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
+
 import com.sgg.suivisprod.domain.Task;
 import com.sgg.suivisprod.domain.User;
 import com.sgg.suivisprod.repository.TaskRepository;
@@ -93,6 +96,22 @@ public class TaskService {
 		String taskId = taskRepository.save(task).getId();
 		notificationService.notify(NotificationType.SUCCESS, "New task saved", user);
 		return taskId;
+	}
+
+	public void updateTaskState(String taskId, String taskState) {
+		Optional<Task> task = taskRepository.findById(taskId);
+		if (!task.isEmpty()) {
+			Task tempTask = task.get();
+			tempTask.setTaskState(taskState);
+
+			if (taskState.equals(TaskState.IN_PROGRESS.toString()) && tempTask.getStartDate() == null) {
+				tempTask.setStartDate(new Date());
+			} else if (taskState.equals(TaskState.DONE.toString())) {
+				tempTask.setFinishedDate(new Date());
+			}
+
+			updateTask(tempTask);
+		}
 	}
 
 	/**
