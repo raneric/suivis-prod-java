@@ -84,17 +84,46 @@ public class TaskService {
 	}
 
 	/**
-	 * Save new task or update existing task
+	 * Save new task or update existing one
 	 * 
 	 * @param task
 	 * @param userName
 	 * @return
 	 */
-	public String saveNewTask(Task task, String userName) {
+	public String saveTask(Task task, String userName) {
+		String taskId = new String();
+		if (task.getId() == null) {
+			taskId = saveNewTask(task, userName);
+		} else {
+			taskId = updateTask(task);
+		}
+		return taskId;
+	}
+
+	/**
+	 * Insert nes task to DB
+	 * 
+	 * @param Task task
+	 * @param String userName
+	 * @return String task ID
+	 */
+	private String saveNewTask(Task task, String userName) {
 		User user = userRepository.findByUsername(userName);
 		task.setUser(user);
 		String taskId = taskRepository.save(task).getId();
 		notificationService.notify(NotificationType.SUCCESS, "New task saved", user);
+		return taskId;
+	}
+
+	/**
+	 * update existing task
+	 * 
+	 * @param Task task
+	 * @return String task ID
+	 */
+	public String updateTask(Task task) {
+		String taskId = taskRepository.save(task).getId();
+		notificationService.notify(NotificationType.SUCCESS, "New task updated", task.getUser());
 		return taskId;
 	}
 
@@ -112,18 +141,6 @@ public class TaskService {
 
 			updateTask(tempTask);
 		}
-	}
-
-	/**
-	 * update existing task
-	 * 
-	 * @param task
-	 * @return
-	 */
-	public String updateTask(Task task) {
-		String taskId = taskRepository.save(task).getId();
-		notificationService.notify(NotificationType.SUCCESS, "New task updated", task.getUser());
-		return taskId;
 	}
 
 	/**

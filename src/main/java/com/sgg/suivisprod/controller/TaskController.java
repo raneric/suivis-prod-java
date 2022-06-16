@@ -56,7 +56,7 @@ public class TaskController {
 
 	@PostMapping(NEW_TASK_PATH)
 	public String newTask(Task task, Principal userPrinicipal) {
-		String taskId = taskService.saveNewTask(task, userPrinicipal.getName());
+		String taskId = taskService.saveTask(task, userPrinicipal.getName());
 		return "redirect:/task/" + taskId;
 	}
 

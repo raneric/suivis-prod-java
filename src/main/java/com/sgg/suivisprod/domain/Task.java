@@ -15,25 +15,29 @@ import com.sgg.suivisprod.utils.TaskState;
 public class Task implements Comparable<Task> {
 
 	@Id
-	private String  id;
-	private int     taskId;
-	
+	private String	id;
+	private int		taskId;
+
 	@Size(min = 5, max = 50)
-	private String  taskType;
-	private boolean prio;
-	
+	private String	taskType;
+	private boolean	prio;
+
 	@Min(value = 0)
-	private double  totalWorkingTime;
-	private Date    startDate;
-	private Date    finishedDate;
-	private String  note;
-	private String  taskState = TaskState.TODO.toString();
-	private double  productivity;
-	private Booth   booth;
-	private User    user;
+	private double	totalWorkingTime;
+	private Date	startDate;
+	private Date	finishedDate;
+	private String	note;
+	private String	taskState	= TaskState.TODO.toString();
+	private double	productivity;
+	private Booth	booth;
+	private User	user;
 
 	public String getId() {
 		return id;
+	}
+
+	public void setId(String id) {
+		this.id = (id.equals("")) ? null : id;
 	}
 
 	public int getTaskId() {
@@ -64,9 +68,10 @@ public class Task implements Comparable<Task> {
 		return totalWorkingTime;
 	}
 
-	/*public String getTotalWorkingTimeAsString() {
-		return convertDoubleTimeAsFormatedString(this.totalWorkingTime);
-	}*/
+	/*
+	 * public String getTotalWorkingTimeAsString() { return
+	 * convertDoubleTimeAsFormatedString(this.totalWorkingTime); }
+	 */
 
 	public void setTotalWorkingTime(double totalWorkingTime) {
 		this.totalWorkingTime = totalWorkingTime;
@@ -132,8 +137,7 @@ public class Task implements Comparable<Task> {
 	public int compareTo(Task task2) {
 		if (this.totalWorkingTime > task2.totalWorkingTime) {
 			return 1;
-		}
-		else if (this.totalWorkingTime < task2.totalWorkingTime) {
+		} else if (this.totalWorkingTime < task2.totalWorkingTime) {
 			return -1;
 		}
 		return 0;
