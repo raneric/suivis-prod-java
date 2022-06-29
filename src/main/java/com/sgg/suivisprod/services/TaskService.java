@@ -138,7 +138,6 @@ public class TaskService {
 			} else if (taskState.equals(TaskState.DONE.toString())) {
 				tempTask.setFinishedDate(new Date());
 			}
-
 			updateTask(tempTask);
 		}
 	}

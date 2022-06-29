@@ -56,12 +56,11 @@ public class PaginationService {
 		int	startRangeIndex	= 0;
 		int	lastDigit		= currentPage % 10;
 
-		if (lastDigit <= 5) {
-			startRangeIndex = currentPage - lastDigit + 1;
-		} else if (lastDigit > 5) {
+		if (lastDigit > 5) {
 			lastDigit -= 5;
-			startRangeIndex = currentPage - lastDigit + 1;
 		}
+		
+		startRangeIndex = currentPage - lastDigit + 1;
 		return startRangeIndex;
 	}
 
