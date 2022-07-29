@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+	<th:block th:fragment="productivity_block">
+		<div class="prod-type">
+			<div
+				th:replace="~{fragments/prod_header_card :: productivity_header_card}">
+			</div>
+			<div class="prod-items">
+				<th:block th:include="~{fragments/prod_card :: productivity_card}"></th:block>
+				<th:block th:include="~{fragments/prod_card :: productivity_card}"></th:block>
+				<th:block th:include="~{fragments/prod_card :: productivity_card}"></th:block>
+				<th:block th:include="~{fragments/prod_card :: productivity_card}"></th:block>
+				<th:block th:include="~{fragments/prod_card :: productivity_card}"></th:block>
+				<th:block th:include="~{fragments/prod_card :: productivity_card}"></th:block>
+			</div>
+		</div>
+
+	</th:block>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+	<th:block th:fragment="productivity_header_card">
+		<div class="prod-header">
+			<span class="prod-header-title">
+				<img
+					width="16px"
+					th:src="@{/icons/task.png}" />
+				MAJ
+			</span>
+			<span class="prod-header-time">
+				<img
+					width="16px"
+					th:src="@{/icons/clock.png}" />
+				13hh:30min
+			</span>
+			<span class="header-prod">
+				<img
+					width="16px"
+					th:src="@{/icons/prod.png}" />
+				80%
+			</span>
+			<span class="prod">Productivity : 100%</span>
+		</div>
+	</th:block>
+</body>
+</html>

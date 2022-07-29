@@ -2,12 +2,17 @@
 <html
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
-	th:replace="~{layouts/layout::app_layout(~{::title},~{},~{::span},)}">
+	th:replace="~{layouts/layout::app_layout(~{::title},~{},~{::div.prod-container})}">
 <head>
 <meta charset="UTF-8" />
 <title>Productivity</title>
 </head>
 <body>
-	<span>PRODUCTIVITY</span>
+	<div class="prod-container">
+		<div th:replace="~{fragments/prod_bolck :: productivity_block}"></div>
+		<div th:replace="~{fragments/prod_bolck :: productivity_block}"></div>
+		<div th:replace="~{fragments/prod_bolck :: productivity_block}"></div>
+		<div th:replace="~{fragments/prod_bolck :: productivity_block}"></div>
+	</div>
 </body>
 </html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+	<th:block th:fragment="productivity_card">
+		<div class="item">
+			<span class="prod-title">
+				<img
+					width="16px"
+					th:src="@{/icons/task.png}" />
+				AUTOVALIDMAJ
+			</span>
+			<span class="prod-average">
+				<img
+					width="16px"
+					th:src="@{/icons/prod.png}" />
+				100%
+			</span>
+			<span class="prod-booth">
+				<img
+					width="16px"
+					th:src="@{/icons/select.png}" />
+				10 booth
+			</span>
+		</div>
+	</th:block>
+</body>
+</html>
