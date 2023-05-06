@@ -68,11 +68,6 @@ public class Task implements Comparable<Task> {
 		return totalWorkingTime;
 	}
 
-	/*
-	 * public String getTotalWorkingTimeAsString() { return
-	 * convertDoubleTimeAsFormatedString(this.totalWorkingTime); }
-	 */
-
 	public void setTotalWorkingTime(double totalWorkingTime) {
 		this.totalWorkingTime = totalWorkingTime;
 	}
@@ -134,10 +129,10 @@ public class Task implements Comparable<Task> {
 	}
 
 	@Override
-	public int compareTo(Task task2) {
-		if (this.totalWorkingTime > task2.totalWorkingTime) {
+	public int compareTo(Task otherTask) {
+		if (this.totalWorkingTime > otherTask.totalWorkingTime) {
 			return 1;
-		} else if (this.totalWorkingTime < task2.totalWorkingTime) {
+		} else if (this.totalWorkingTime < otherTask.totalWorkingTime) {
 			return -1;
 		}
 		return 0;

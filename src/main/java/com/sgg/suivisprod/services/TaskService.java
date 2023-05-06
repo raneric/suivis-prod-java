@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -48,13 +50,20 @@ public class TaskService {
 		return taskListToview;
 	}
 
+	public List<Task> findDoneTask(String userName) {
+		List<Task>	allTask		= taskRepository.findAllByUserName(userName);
+		List<Task>	taskDone	= allTask.stream().filter(task -> task.getTaskState().equals("done"))
+				.collect(Collectors.toList());
+		return taskDone;
+	}
+
 	/**
 	 * find and group task by task type
 	 * 
 	 * @param username
 	 * @return
 	 */
-	public Map<String, List<Task>> findByTaskState(String username) {
+	public Map<String, List<Task>> findTaskGroupedByState(String username) {
 		Map<String, List<Task>>	taskBytaskState	= new HashMap<>();
 		Pageable				pageDescOrder	= PageRequest.of(0, 7, Sort.by(Direction.DESC, "startDate"));
 		Pageable				pageAscOrder	= PageRequest.of(0, 7);
@@ -103,7 +112,7 @@ public class TaskService {
 	/**
 	 * Insert nes task to DB
 	 * 
-	 * @param Task task
+	 * @param Task   task
 	 * @param String userName
 	 * @return String task ID
 	 */
@@ -150,5 +159,21 @@ public class TaskService {
 		User user = taskRepository.findById(taskId).get().getUser();
 		taskRepository.deleteById(taskId);
 		notificationService.notify(NotificationType.SUCCESS, "Task deleted", user);
+	}
+
+	public Map<String, List<Task>> getFilteredTask(String userName) {
+		List<Task>		allTask					= taskRepository.findAllByUserName(userName);
+		Predicate<Task>	doneTaskWithWorkingTime	= task -> (task.getTaskState().equals(TaskState.DONE.toString())
+				&& task.getTotalWorkingTime() != 0);
+
+		List<Task> doneTask = allTask.stream().filter(doneTaskWithWorkingTime).collect(Collectors.toList());
+
+		return doneTask.stream().collect(Collectors.groupingBy(task -> {
+			if (task.getTaskType().indexOf("Prio") > 0) {
+				return task.getTaskType().substring(0, task.getTaskType().indexOf("Prio"));
+			} else {
+				return task.getTaskType();
+			}
+		}));
 	}
 }

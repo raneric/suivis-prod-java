@@ -27,7 +27,7 @@ public class DashBoardController {
 	}
 
 	@ModelAttribute("allTask")
-	private Map<String, List<Task>> pupulateTodo(Principal principal) {
-		return taskService.findByTaskState(principal.getName());
+	private Map<String, List<Task>> pupulate(Principal principal) {
+		return taskService.findTaskGroupedByState(principal.getName());
 	}
 }

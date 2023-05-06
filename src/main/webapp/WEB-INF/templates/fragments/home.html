@@ -10,37 +10,42 @@
 	<div
 		th:fragment="home_page"
 		class="home-menu">
-		<div class="home-btn">
-			<a href="/dashboard">
-				<img
-					class="home-icon"
-					th:src="@{/icons/dashboard.png}" />
-			</a>
+		<div>
+			<span class="home-menu-title">Dashboard</span>
+			<div class="home-btn">
+				<a href="/dashboard"> <img
+						class="home-icon"
+						th:src="@{/icons/dashboard.png}" />
+				</a>
+			</div>
 		</div>
-		<div class="home-btn">
-			<a href="/task/new">
-				
-				<img
-					class="home-icon"
-					th:src="@{/icons/document.png}" />
-			</a>
+		<div>
+			<span class="home-menu-title">New Task</span>
+			<div class="home-btn">
+				<a href="/task/new"> <img
+						class="home-icon"
+						th:src="@{/icons/document.png}" />
+				</a>
+			</div>
 		</div>
-		<div class="home-btn">
-			<a href="/history">
-				
-				<img
-					class="home-icon"
-					th:src="@{/icons/list.png}" />
+		<div>
+			<div class="home-btn">
+				<a href="/history"> <img
+						class="home-icon"
+						th:src="@{/icons/list.png}" />
 
-			</a>
+				</a>
+			</div>
+			<span class="home-menu-title">History</span>
 		</div>
-		<div class="home-btn">
-			<a href="/productivity">
-				
-				<img
-					class="home-icon"
-					th:src="@{/icons/productivity.png}" />
-			</a>
+		<div>
+			<div class="home-btn">
+				<a href="/productivity"> <img
+						class="home-icon"
+						th:src="@{/icons/productivity.png}" />
+				</a>
+			</div>
+			<span class="home-menu-title">Productivity</span>
 		</div>
 	</div>
 </body>

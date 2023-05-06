@@ -3,6 +3,7 @@ package com.sgg.suivisprod.controller;
 import static com.sgg.suivisprod.constant.AppCont.CREA_TASK_TYPE;
 import static com.sgg.suivisprod.constant.AppCont.MAJ_TASK_TYPE;
 import static com.sgg.suivisprod.constant.AppCont.OTHERS_TASK_TYPE;
+import static com.sgg.suivisprod.constant.AppCont.VALIDATION_TASK_TYPE;
 import static com.sgg.suivisprod.constant.PathConst.NEW_TASK_PATH;
 import static com.sgg.suivisprod.constant.PathConst.TASK_PATH;
 import static com.sgg.suivisprod.constant.PathConst.TASK_VIEW;
@@ -81,19 +82,9 @@ public class TaskController {
 		return "{\"data\":\"data sent\"}";
 	}
 
-	@ModelAttribute(CREA_TASK_TYPE)
-	public TaskType populateCreaTaskType() {
-		return taskTypeService.getCrea();
-	}
-
-	@ModelAttribute(MAJ_TASK_TYPE)
-	public TaskType populateMajTaskType() {
-		return taskTypeService.getMaj();
-	}
-
-	@ModelAttribute(OTHERS_TASK_TYPE)
-	public TaskType populateOthersTaskType() {
-		return taskTypeService.getOthers();
+	@ModelAttribute("allTaskType")
+	public List<TaskType>populateTaskType() {
+		return taskTypeService.findAll();
 	}
 
 	@ModelAttribute("notifications")

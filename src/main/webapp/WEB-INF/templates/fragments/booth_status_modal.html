@@ -13,7 +13,7 @@
 			th:replace="~{layouts/modal_layout::modal_layout(~{::div.modal-content})}">
 			<div class="modal-content">
 				<div class="status-com-group">
-					Status Com
+					<span class="status-com_title">Status Com</span>
 					<label for="essai">
 						Essai <input
 							onclick="handleStatusCom(event)"
@@ -61,7 +61,7 @@
 					</label>
 				</div>
 				<div class="status-iv-group">
-					Status IVP
+					<span class="status-com_title">Status IVP</span>
 					<label for="status-i">
 						<input
 							name="statu-iv"
@@ -88,6 +88,15 @@
 							class="form-check-input"
 							type="radio"
 							id="status-pv" /> P
+					</label>
+					<label for="status-p">
+						<input
+							onclick="handleStatusCom(event)"
+							name="statu-iv"
+							value="N"
+							class="form-check-input"
+							type="radio"
+							id="status-pv" /> N
 					</label>
 				</div>
 			</div>
